@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    .cute-success-wrap {
+        min-height: 70vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 15px;
+    }
+    .cute-success-card {
+        background: #ffffff;
+        border: 2px solid #f1f2f6;
+        border-radius: 28px;
+        padding: 45px 35px;
+        max-width: 480px;
+        width: 100%;
+        text-align: center;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.05);
+    }
+    .cute-icon-bubble {
+        width: 85px;
+        height: 85px;
+        background: #e8f5e9;
+        color: #00b894;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 44px;
+        margin: 0 auto 24px;
+        box-shadow: 0 8px 20px rgba(0, 184, 148, 0.2);
+    }
+    .cute-pill-info {
+        background: #fafbfc;
+        border: 2px dashed #dfe6e9;
+        border-radius: 18px;
+        padding: 18px 20px;
+        margin: 24px 0;
+        text-align: left;
+    }
+    .cute-btn-outline {
+        background: #f1f2f6;
+        color: #2d3436;
+        font-weight: 700;
+        border-radius: 14px;
+        padding: 12px 22px;
+        text-decoration: none;
+        display: inline-block;
+        transition: 0.2s;
+    }
+    .cute-btn-outline:hover {
+        background: #e4e7ea;
+        color: #2d3436;
+    }
+</style>
+
+<div class="cute-success-wrap">
+    <div class="cute-success-card">
+        <div class="cute-icon-bubble">✓</div>
+
+        <h2 class="fw-bolder" style="color: #2d3436; font-size: 26px; margin-bottom: 8px;">Order Confirmed! 🎉</h2>
+        <p style="color: #636e72; font-size: 15px; line-height: 1.5; margin-bottom: 20px;">
+            YAY! Your yummy meal is being cooked with love and care! 🧁✨
+        </p>
+
+        {% if order %}
+        <div class="cute-pill-info">
+            <div class="d-flex justify-content-between mb-2">
+                <span style="color: #636e72; font-size: 14px; font-weight: 600;">Order ID</span>
+                <strong style="color: #2d3436;">#{{ order.id }}</strong>
+            </div>
+            <div class="d-flex justify-content-between mb-2">
+                <span style="color: #636e72; font-size: 14px; font-weight: 600;">Status</span>
+                <span class="badge" style="background-color: #00b894; font-size: 12px; padding: 6px 12px; border-radius: 30px;">Paid Online 💳</span>
+            </div>
+            <div class="d-flex justify-content-between pt-2" style="border-top: 1px solid #edf2f7;">
+                <span style="color: #636e72; font-size: 14px; font-weight: 600;">Total Paid</span>
+                <strong style="color: #0984e3; font-size: 18px;">₹{{ order.total_amount }}</strong>
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="d-flex gap-2 justify-content-center flex-wrap">
+            <a href="{% url 'menu' %}" class="btn" style="background: linear-gradient(135deg, #0984e3, #74b9ff); color: white; font-weight: 700; border-radius: 14px; padding: 12px 24px;">
+                Order More 🍕
+            </a>
+            <a href="{% url 'my_orders' %}" class="cute-btn-outline">
+                Track Bites 🛵
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

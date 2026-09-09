@@ -1,0 +1,549 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{% block title %}Foodie{% endblock %}</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #fffaf5;
+            color: #222;
+            padding-top: 76px;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            height: 76px;
+            width: 100%;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 6%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            text-decoration: none;
+            font-size: 28px;
+            font-weight: 800;
+            color: #ff5a1f;
+            letter-spacing: -1px;
+        }
+
+        .nav-center {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-center a {
+            text-decoration: none;
+            color: #333;
+            font-size: 15px;
+            font-weight: 600;
+            transition: 0.2s ease;
+        }
+
+        .nav-center a:hover {
+            color: #ff5a1f;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .profile-btn,
+        .menu-btn {
+            width: 42px;
+            height: 42px;
+            border: none;
+            border-radius: 50%;
+            background: #fff1e9;
+            color: #ff5a1f;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: 0.2s ease;
+        }
+
+        .profile-btn:hover,
+        .menu-btn:hover {
+            background: #ff5a1f;
+            color: white;
+        }
+
+        .menu-btn {
+            font-size: 21px;
+        }
+
+        /* ================= OVERLAY ================= */
+
+        .drawer-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.45);
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s ease;
+            z-index: 1090;
+        }
+
+        .drawer-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* ================= DRAWER ================= */
+
+        .side-drawer {
+            position: fixed;
+            top: 0;
+            right: -360px;
+            width: 340px;
+            max-width: 88%;
+            height: 100vh;
+            background: #ffffff;
+            z-index: 1100;
+            padding: 28px 24px;
+            box-shadow: -8px 0 30px rgba(0,0,0,0.15);
+            transition: right 0.3s ease;
+            overflow-y: auto;
+        }
+
+        .side-drawer.active {
+            right: 0;
+        }
+
+        .drawer-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-bottom: 22px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 18px;
+        }
+
+        .drawer-header h2 {
+            color: #ff5a1f;
+            font-size: 25px;
+        }
+
+        .drawer-close {
+            width: 38px;
+            height: 38px;
+            border: none;
+            border-radius: 50%;
+            background: #f5f5f5;
+            cursor: pointer;
+            font-size: 22px;
+            color: #333;
+        }
+
+        .drawer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .drawer-links a {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 15px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #333;
+            font-size: 16px;
+            font-weight: 600;
+            transition: 0.2s ease;
+        }
+
+        .drawer-links a:hover {
+            background: #fff1e9;
+            color: #ff5a1f;
+        }
+
+        .drawer-divider {
+            height: 1px;
+            background: #eee;
+            margin: 12px 0;
+        }
+
+        .drawer-user {
+            background: #fff8f3;
+            border-radius: 14px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .drawer-user strong {
+            display: block;
+            color: #222;
+            margin-bottom: 4px;
+        }
+
+        .drawer-user span {
+            color: #777;
+            font-size: 13px;
+        }
+
+        /* ================= MESSAGES ================= */
+
+        .messages-container {
+            position: fixed;
+            top: 90px;
+            right: 20px;
+            z-index: 2000;
+            width: 350px;
+            max-width: calc(100% - 40px);
+        }
+
+        .message {
+            background: white;
+            padding: 14px 18px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+            font-size: 14px;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 850px) {
+
+            .navbar {
+                padding: 0 20px;
+            }
+
+            .nav-center {
+                display: none;
+            }
+
+            .logo {
+                font-size: 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+
+            body {
+                padding-top: 68px;
+            }
+
+            .navbar {
+                height: 68px;
+            }
+
+            .side-drawer {
+                width: 300px;
+            }
+
+            .messages-container {
+                top: 78px;
+                right: 10px;
+                width: calc(100% - 20px);
+                max-width: none;
+            }
+        }
+
+        /* ================= PAGE CUSTOM CSS ================= */
+
+        {% block extra_css %}{% endblock %}
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+        <a href="{% url 'home' %}" class="logo">
+            🍴 Foodie
+        </a>
+
+        <div class="nav-center">
+
+            <a href="{% url 'home' %}">
+                Home
+            </a>
+
+            <a href="{% url 'home' %}#categories">
+                Categories
+            </a>
+
+            <a href="{% url 'menu' %}">
+                Menu
+            </a>
+
+            <a href="{% url 'contact' %}">
+                Contact
+            </a>
+
+            <a href="{% url 'cart' %}">
+                🛒 Cart
+            </a>
+
+        </div>
+
+        <div class="nav-right">
+
+            <button class="profile-btn" onclick="openDrawer()" title="Profile">
+                👤
+            </button>
+
+            <button class="menu-btn" onclick="openDrawer()" title="Menu">
+                ☰
+            </button>
+
+        </div>
+
+    </nav>
+
+
+    <!-- ================= DRAWER OVERLAY ================= -->
+
+    <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+
+
+    <!-- ================= SIDE DRAWER ================= -->
+
+    <aside class="side-drawer" id="sideDrawer">
+
+        <div class="drawer-header">
+
+            <h2>🍴 Foodie</h2>
+
+            <button class="drawer-close" onclick="closeDrawer()">
+                ×
+            </button>
+
+        </div>
+
+
+        {% if user.is_authenticated %}
+
+        <div class="drawer-user">
+
+            <strong>
+                Hi, {{ user.first_name|default:user.username }} 👋
+            </strong>
+
+            <span>
+                Welcome back to Foodie
+            </span>
+
+        </div>
+
+        {% endif %}
+
+
+        <div class="drawer-links">
+
+            <!-- HOME -->
+
+            <a href="{% url 'home' %}" onclick="closeDrawer()">
+                🏠
+                <span>Home</span>
+            </a>
+
+
+            <!-- CATEGORIES -->
+
+            <a href="{% url 'home' %}#categories" onclick="closeDrawer()">
+                📂
+                <span>Categories</span>
+            </a>
+
+
+            <!-- MENU -->
+
+            <a href="{% url 'menu' %}" onclick="closeDrawer()">
+                🍽️
+                <span>Menu</span>
+            </a>
+
+
+            <!-- JAIN MENU -->
+
+            <a href="{% url 'jain_menu' %}" onclick="closeDrawer()">
+                🌱
+                <span>Jain Menu</span>
+            </a>
+
+
+            <!-- CART -->
+
+            <a href="{% url 'cart' %}" onclick="closeDrawer()">
+                🛒
+                <span>Cart</span>
+            </a>
+
+
+            <!-- CONTACT -->
+
+            <a href="{% url 'contact' %}" onclick="closeDrawer()">
+                📞
+                <span>Contact</span>
+            </a>
+
+
+            <div class="drawer-divider"></div>
+
+
+            {% if user.is_authenticated %}
+
+            <!-- MY ORDERS -->
+
+            <a href="{% url 'my_orders' %}" onclick="closeDrawer()">
+                📦
+                <span>My Orders</span>
+            </a>
+
+
+            <!-- LOGOUT -->
+
+            <a href="{% url 'logout' %}" onclick="closeDrawer()">
+                🚪
+                <span>Logout</span>
+            </a>
+
+            {% else %}
+
+            <!-- LOGIN -->
+
+            <a href="{% url 'login' %}" onclick="closeDrawer()">
+                🔑
+                <span>Login</span>
+            </a>
+
+
+            <!-- REGISTER -->
+
+            <a href="{% url 'register' %}" onclick="closeDrawer()">
+                📝
+                <span>Create Account</span>
+            </a>
+
+            {% endif %}
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= DJANGO MESSAGES ================= -->
+
+    {% if messages %}
+
+    <div class="messages-container">
+
+        {% for message in messages %}
+
+        <div class="message">
+            {{ message }}
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    {% endif %}
+
+
+    <!-- ================= PAGE CONTENT ================= -->
+
+    {% block content %}
+    {% endblock %}
+
+
+    <!-- ================= COMMON JS ================= -->
+
+    <script>
+
+        function openDrawer() {
+
+            const drawer = document.getElementById("sideDrawer");
+            const overlay = document.getElementById("drawerOverlay");
+
+            drawer.classList.add("active");
+            overlay.classList.add("active");
+
+            document.body.style.overflow = "hidden";
+        }
+
+
+        function closeDrawer() {
+
+            const drawer = document.getElementById("sideDrawer");
+            const overlay = document.getElementById("drawerOverlay");
+
+            drawer.classList.remove("active");
+            overlay.classList.remove("active");
+
+            document.body.style.overflow = "";
+        }
+
+
+        /* ESC KEY */
+
+        document.addEventListener("keydown", function(event) {
+
+            if (event.key === "Escape") {
+                closeDrawer();
+            }
+
+        });
+
+
+        /* AUTO HIDE MESSAGES */
+
+        setTimeout(function() {
+
+            const messages = document.querySelectorAll(".message");
+
+            messages.forEach(function(message) {
+
+                message.style.transition = "opacity 0.4s ease";
+                message.style.opacity = "0";
+
+                setTimeout(function() {
+                    message.remove();
+                }, 400);
+
+            });
+
+        }, 3500);
+
+    </script>
+
+
+    {% block extra_js %}
+    {% endblock %}
+
+</body>
+</html>

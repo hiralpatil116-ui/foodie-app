@@ -1,0 +1,821 @@
+{% extends "base.html" %}
+
+{% block title %}
+Contact Us | Foodie
+{% endblock %}
+
+
+{% block extra_css %}
+
+<style>
+
+    .contact-page {
+        min-height: calc(100vh - 76px);
+
+        background-image:
+            linear-gradient(
+                rgba(255, 255, 255, 0.78),
+                rgba(255, 248, 243, 0.82)
+            ),
+            url("https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=2000&q=85");
+
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+
+        padding-bottom: 1px;
+    }
+
+
+    /* ================= HERO ================= */
+
+    .contact-hero {
+        text-align: center;
+
+        padding: 75px 20px 55px;
+
+        background:
+            linear-gradient(
+                rgba(255, 87, 34, 0.88),
+                rgba(255, 112, 67, 0.82)
+            );
+
+        color: white;
+    }
+
+    .tag {
+        display: inline-block;
+
+        padding: 9px 18px;
+
+        background: rgba(255, 255, 255, 0.18);
+
+        border: 1px solid rgba(255, 255, 255, 0.3);
+
+        border-radius: 30px;
+
+        font-size: 14px;
+
+        margin-bottom: 18px;
+    }
+
+    .contact-hero h1 {
+        font-size: 48px;
+        margin-bottom: 15px;
+    }
+
+    .contact-hero p {
+        max-width: 650px;
+
+        margin: auto;
+
+        line-height: 1.7;
+
+        font-size: 17px;
+
+        opacity: 0.95;
+    }
+
+    .hero-food-row {
+        margin-top: 25px;
+
+        font-size: 35px;
+
+        letter-spacing: 7px;
+    }
+
+
+    /* ================= DJANGO MESSAGES ================= */
+
+    .contact-messages {
+        width: 90%;
+        max-width: 900px;
+
+        margin: 25px auto 0;
+
+        text-align: center;
+    }
+
+    .success-message,
+    .error-message {
+        display: inline-block;
+
+        padding: 13px 25px;
+
+        border-radius: 30px;
+
+        font-weight: 600;
+
+        box-shadow:
+            0 8px 25px rgba(0, 0, 0, 0.1);
+
+        margin-bottom: 10px;
+    }
+
+    .success-message {
+        background: #e8f5e9;
+        color: #2e7d32;
+    }
+
+    .error-message {
+        background: #ffebee;
+        color: #c62828;
+    }
+
+
+    /* ================= CONTACT SECTION ================= */
+
+    .contact-section {
+
+        width: 90%;
+        max-width: 1150px;
+
+        margin: 55px auto;
+
+        display: grid;
+
+        grid-template-columns:
+            0.9fr 1.1fr;
+
+        gap: 35px;
+    }
+
+
+    /* ================= CONTACT INFO ================= */
+
+    .contact-info {
+
+        background: rgba(255, 255, 255, 0.94);
+
+        padding: 38px;
+
+        border-radius: 25px;
+
+        box-shadow:
+            0 15px 40px rgba(0, 0, 0, 0.09);
+    }
+
+    .mini-food {
+        font-size: 40px;
+        margin-bottom: 15px;
+    }
+
+    .contact-info h2 {
+
+        font-size: 34px;
+
+        margin-bottom: 15px;
+    }
+
+    .contact-info h2 span {
+        color: #ff5722;
+    }
+
+    .contact-info > p {
+
+        color: #666;
+
+        line-height: 1.7;
+
+        margin-bottom: 25px;
+    }
+
+
+    /* ================= INFO BOX ================= */
+
+    .info-box {
+
+        display: flex;
+
+        align-items: center;
+
+        gap: 17px;
+
+        padding: 17px;
+
+        margin-top: 15px;
+
+        border-radius: 15px;
+
+        background: #fff7f2;
+
+        border: 1px solid #ffe2d5;
+
+        transition: 0.3s;
+    }
+
+    .info-box:hover {
+
+        transform: translateX(5px);
+
+        box-shadow:
+            0 8px 20px rgba(255, 87, 34, 0.08);
+    }
+
+    .info-icon {
+
+        min-width: 45px;
+        height: 45px;
+
+        display: flex;
+
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 50%;
+
+        background: #ff5722;
+
+        color: white;
+
+        font-size: 20px;
+    }
+
+    .info-box h3 {
+        margin-bottom: 5px;
+        font-size: 16px;
+    }
+
+    .info-box p {
+        color: #777;
+        font-size: 14px;
+        margin: 0;
+    }
+
+
+    /* ================= FORM ================= */
+
+    .contact-form {
+
+        background: rgba(255, 255, 255, 0.96);
+
+        padding: 40px;
+
+        border-radius: 25px;
+
+        box-shadow:
+            0 15px 40px rgba(0, 0, 0, 0.09);
+    }
+
+    .contact-form h2 {
+
+        font-size: 30px;
+
+        margin-bottom: 8px;
+    }
+
+    .form-subtitle {
+
+        color: #777;
+
+        margin-bottom: 28px;
+    }
+
+
+    /* ================= FORM ROW ================= */
+
+    .form-row {
+
+        display: grid;
+
+        grid-template-columns: 1fr 1fr;
+
+        gap: 18px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+
+        display: block;
+
+        margin-bottom: 8px;
+
+        font-weight: 600;
+
+        color: #333;
+    }
+
+    .form-group input,
+    .form-group textarea {
+
+        width: 100%;
+
+        padding: 14px 16px;
+
+        border: 1px solid #ddd;
+
+        border-radius: 12px;
+
+        outline: none;
+
+        font-size: 15px;
+
+        background: #fff;
+
+        transition: 0.3s;
+
+        box-sizing: border-box;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+
+        border-color: #ff5722;
+
+        box-shadow:
+            0 0 0 3px rgba(255, 87, 34, 0.1);
+    }
+
+    .form-group textarea {
+
+        height: 150px;
+
+        resize: vertical;
+    }
+
+
+    /* ================= SEND BUTTON ================= */
+
+    .send-btn {
+
+        width: 100%;
+
+        padding: 15px;
+
+        border: none;
+
+        border-radius: 30px;
+
+        background: linear-gradient(
+            135deg,
+            #ff5722,
+            #ff7043
+        );
+
+        color: white;
+
+        font-size: 16px;
+
+        font-weight: bold;
+
+        cursor: pointer;
+
+        transition: 0.3s;
+
+        box-shadow:
+            0 8px 20px rgba(255, 87, 34, 0.25);
+    }
+
+    .send-btn:hover {
+
+        transform: translateY(-2px);
+
+        box-shadow:
+            0 12px 25px rgba(255, 87, 34, 0.32);
+    }
+
+
+    /* ================= FOOD LOVE ================= */
+
+    .food-love {
+
+        width: 90%;
+        max-width: 1150px;
+
+        margin: 0 auto 55px;
+
+        padding: 28px 35px;
+
+        background:
+            linear-gradient(
+                135deg,
+                #fff,
+                #fff5ef
+            );
+
+        border-radius: 22px;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        gap: 20px;
+
+        box-shadow:
+            0 10px 30px rgba(0, 0, 0, 0.07);
+    }
+
+    .food-love h3 {
+
+        color: #ff5722;
+
+        margin-bottom: 7px;
+    }
+
+    .food-love p {
+        color: #777;
+    }
+
+    .food-icons {
+
+        font-size: 30px;
+
+        white-space: nowrap;
+    }
+
+
+    /* ================= FOOTER ================= */
+
+    .contact-footer {
+
+        background: #222;
+
+        color: white;
+
+        padding: 40px 8%;
+
+        text-align: center;
+
+        margin-top: 20px;
+    }
+
+    .contact-footer h2 {
+
+        color: #ff5722;
+
+        margin-bottom: 10px;
+    }
+
+    .contact-footer p {
+        color: #bbb;
+    }
+
+
+    /* ================= RESPONSIVE ================= */
+
+    @media (max-width: 850px) {
+
+        .contact-section {
+            grid-template-columns: 1fr;
+        }
+
+        .form-row {
+            grid-template-columns: 1fr;
+        }
+
+        .food-love {
+            flex-direction: column;
+            text-align: center;
+        }
+
+    }
+
+
+    @media (max-width: 600px) {
+
+        .contact-hero h1 {
+            font-size: 35px;
+        }
+
+        .contact-info,
+        .contact-form {
+            padding: 25px;
+        }
+
+        .contact-section {
+            width: 92%;
+        }
+
+        .food-love {
+            width: 92%;
+        }
+
+        .food-icons {
+            font-size: 24px;
+        }
+
+    }
+
+</style>
+
+{% endblock %}
+
+
+{% block content %}
+
+<div class="contact-page">
+
+
+    <!-- ================= HERO ================= -->
+
+    <section class="contact-hero">
+
+        <div class="tag">
+            💬 We'd Love To Hear From You
+        </div>
+
+        <h1>
+            Let's Talk About Food ❤️
+        </h1>
+
+        <p>
+            Have a question, suggestion or feedback?
+            Send us a message and our Foodie team will
+            be happy to help you.
+        </p>
+
+        <div class="hero-food-row">
+            🍕 &nbsp; 🍔 &nbsp; 🥗 &nbsp; 🍰 &nbsp; 🥤
+        </div>
+
+    </section>
+
+
+    <!-- ================= DJANGO MESSAGES ================= -->
+
+    {% if messages %}
+
+    <div class="contact-messages">
+
+        {% for message in messages %}
+
+            <div
+                class="{% if message.tags == 'error' %}error-message{% else %}success-message{% endif %}"
+            >
+                {{ message }}
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+    {% endif %}
+
+
+    <!-- ================= CONTACT SECTION ================= -->
+
+    <section class="contact-section">
+
+
+        <!-- ================= INFO ================= -->
+
+        <div class="contact-info">
+
+            <div class="mini-food">
+                🍕🍔
+            </div>
+
+            <h2>
+                Get In <span>Touch</span>
+            </h2>
+
+            <p>
+                We believe good food brings people together.
+
+                If you need help with an order or simply want
+                to share your feedback, we're here for you. ❤️
+            </p>
+
+
+            <div class="info-box">
+
+                <div class="info-icon">
+                    📍
+                </div>
+
+                <div>
+
+                    <h3>
+                        Our Location
+                    </h3>
+
+                    <p>
+                        Pune, Maharashtra, India
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <div class="info-icon">
+                    📞
+                </div>
+
+                <div>
+
+                    <h3>
+                        Call Us
+                    </h3>
+
+                    <p>
+                        +91 98765 43210
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <div class="info-icon">
+                    ✉️
+                </div>
+
+                <div>
+
+                    <h3>
+                        Email
+                    </h3>
+
+                    <p>
+                        foodie@example.com
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <div class="info-icon">
+                    🕐
+                </div>
+
+                <div>
+
+                    <h3>
+                        Opening Hours
+                    </h3>
+
+                    <p>
+                        Monday - Sunday • 10 AM - 11 PM
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= FORM ================= -->
+
+        <div class="contact-form">
+
+            <h2>
+                Send Us a Message ✨
+            </h2>
+
+            <p class="form-subtitle">
+                Tell us what's on your mind. We are listening! 💌
+            </p>
+
+
+            <form
+                method="POST"
+                action="{% url 'contact' %}"
+            >
+
+                {% csrf_token %}
+
+
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="name">
+                            Your Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Enter your name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="subject">
+                        Subject
+                    </label>
+
+                    <input
+                        type="text"
+                        id="subject"
+                        name="subject"
+                        placeholder="What would you like to ask?"
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="message">
+                        Message
+                    </label>
+
+                    <textarea
+                        id="message"
+                        name="message"
+                        placeholder="Write your message here... 🍕"
+                        required
+                    ></textarea>
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="send-btn"
+                >
+                    📨 Send Message ❤️
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOD LOVE ================= -->
+
+    <div class="food-love">
+
+        <div class="food-love-text">
+
+            <h3>
+                Made with love, served with happiness ❤️
+            </h3>
+
+            <p>
+                Good food tastes even better when shared with good people.
+            </p>
+
+        </div>
+
+
+        <div class="food-icons">
+            🍕 🍔 🍟 🍝 🍰 🥤
+        </div>
+
+    </div>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="contact-footer">
+
+        <h2>
+            🍴 Foodie
+        </h2>
+
+        <p>
+            Delicious food. Fast delivery. Happy moments. ❤️
+        </p>
+
+        <p style="margin-top:10px;">
+            © 2026 Foodie. All Rights Reserved.
+        </p>
+
+    </footer>
+
+</div>
+
+{% endblock %}

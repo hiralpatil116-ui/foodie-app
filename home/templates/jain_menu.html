@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>Jain Menu - Foodie</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+        background:
+            linear-gradient(rgba(241, 248, 237, 0.94), rgba(248, 252, 245, 0.96)),
+            url("https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1600&q=85");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        color: #263528;
+    }
+
+    /* ================= NAVBAR ================= */
+
+    /* =========================================================
+   JAIN NAVBAR - SAME STRUCTURE AS MAIN WEBSITE
+   ========================================================= */
+
+nav {
+    width: 100%;
+    height: 76px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 6%;
+
+    background: rgba(255, 255, 255, 0.96);
+
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+
+    position: sticky;
+    top: 0;
+
+    z-index: 2500;
+
+    box-sizing: border-box;
+}
+
+/* Foodie Logo */
+
+nav .logo {
+    flex-shrink: 0;
+
+    font-size: 25px;
+    font-weight: 800;
+
+    color: #263d2b;
+
+    text-decoration: none;
+
+    white-space: nowrap;
+}
+
+
+/* Navigation */
+
+nav .nav-links {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 28px;
+
+    margin-left: auto;
+    margin-right: 25px;
+}
+
+nav .nav-links a {
+    text-decoration: none;
+
+    color: #263d2b;
+
+    font-size: 15px;
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    transition: 0.25s ease;
+}
+
+nav .nav-links a:hover {
+    color: #4f7d55;
+}
+
+
+/* Right side buttons */
+
+nav .nav-right {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    flex-shrink: 0;
+}
+
+
+/* Profile */
+
+nav .profile-btn {
+    width: 43px;
+    height: 43px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #eef6ee;
+
+    color: #416947;
+
+    font-size: 19px;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: 0.25s ease;
+}
+
+nav .profile-btn:hover {
+    background: #416947;
+    color: white;
+
+    transform: scale(1.05);
+}
+
+
+/* Hamburger */
+
+nav .menu-btn {
+    width: 43px;
+    height: 43px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #263d2b;
+
+    color: white;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: 0.25s ease;
+}
+
+nav .menu-btn:hover {
+    background: #416947;
+
+    transform: scale(1.05);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    nav {
+        padding: 0 4%;
+    }
+
+    nav .nav-links {
+        display: none;
+    }
+
+}
+
+
+@media (max-width: 500px) {
+
+    nav {
+        height: 68px;
+        padding: 0 18px;
+    }
+
+    nav .logo {
+        font-size: 22px;
+    }
+
+    nav .profile-btn,
+    nav .menu-btn {
+        width: 40px;
+        height: 40px;
+    }
+
+}
+
+    /* ================= HERO ================= */
+
+    .hero {
+        min-height: 390px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 70px 8%;
+        background:
+            linear-gradient(
+                rgba(43, 77, 37, 0.72),
+                rgba(67, 102, 48, 0.66)
+            ),
+            url("https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=1600&q=85");
+        background-size: cover;
+        background-position: center;
+    }
+
+    .hero-content {
+        max-width: 850px;
+        color: white;
+    }
+
+    .hero-tag {
+        display: inline-block;
+        background: rgba(255,255,255,0.18);
+        border: 1px solid rgba(255,255,255,0.35);
+        padding: 9px 18px;
+        border-radius: 30px;
+        margin-bottom: 20px;
+        font-size: 14px;
+    }
+
+    .hero h1 {
+        font-size: 52px;
+        margin-bottom: 18px;
+    }
+
+    .hero h1 span {
+        color: #d7ec9b;
+    }
+
+    .hero p {
+        font-size: 18px;
+        line-height: 1.7;
+        color: #edf5e8;
+    }
+
+    .hero-note {
+        margin-top: 22px;
+        font-size: 14px;
+        color: #e1efc9;
+    }
+
+    /* ================= SWITCH ================= */
+
+    .switch-area {
+        text-align: center;
+        padding: 35px 20px 10px;
+    }
+
+    .switch-box {
+        display: inline-flex;
+        background: white;
+        padding: 6px;
+        border-radius: 35px;
+        box-shadow: 0 5px 20px rgba(47, 81, 42, 0.12);
+    }
+
+    .switch-box a {
+        text-decoration: none;
+        padding: 12px 25px;
+        border-radius: 28px;
+        font-weight: bold;
+        color: #53704b;
+        transition: 0.3s;
+    }
+
+    .switch-box .active {
+        background: #5f8f3e;
+        color: white;
+    }
+
+
+
+
+
+.menu-switch {
+display: inline-flex;
+align-items: center;
+background: #f1f1f1;
+border-radius: 35px;
+padding: 5px;
+gap: 3px;
+box-shadow: 0 4px 12px rgba(0,0,0,0.10);
+}
+
+.switch-option {
+text-decoration: none;
+color: #555;
+font-weight: 600;
+font-size: 14px;
+padding: 10px 18px;
+border-radius: 28px;
+transition: all 0.3s ease;
+white-space: nowrap;
+}
+
+.switch-option:hover {
+color: #222;
+}
+
+.switch-option.active {
+background: #ff6b35;
+color: white;
+box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+.switch-option.jain-option.active {
+background: #3f8f4d;
+color: white;
+}
+
+@media (max-width: 600px) {
+.switch-option {
+font-size: 12px;
+padding: 8px 12px;
+}
+}
+
+
+
+
+
+
+
+
+    /* ================= SECTION ================= */
+
+    .section {
+        width: 86%;
+        max-width: 1250px;
+        margin: 35px auto 70px;
+    }
+
+    .section-heading {
+        text-align: center;
+        margin-bottom: 35px;
+    }
+
+    .mini-title {
+        color: #729a48;
+        font-weight: bold;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        margin-bottom: 8px;
+    }
+
+    .section-heading h2 {
+        font-size: 35px;
+        color: #304b2c;
+        margin-bottom: 10px;
+    }
+
+    .section-heading p {
+        color: #667561;
+        font-size: 16px;
+    }
+
+    /* ================= FOOD GRID ================= */
+
+    .food-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 25px;
+    }
+
+    .food-card {
+        background: rgba(255,255,255,0.96);
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 8px 25px rgba(44, 73, 38, 0.12);
+        transition: 0.3s;
+    }
+
+    .food-card:hover {
+        transform: translateY(-7px);
+        box-shadow: 0 14px 30px rgba(44, 73, 38, 0.18);
+    }
+
+    .food-image {
+        height: 220px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .food-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: 0.4s;
+    }
+
+    .food-card:hover .food-image img {
+        transform: scale(1.06);
+    }
+
+    .jain-badge {
+        position: absolute;
+        top: 14px;
+        left: 14px;
+        background: #edf6d8;
+        color: #4c7832;
+        padding: 7px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    .food-info {
+        padding: 20px;
+    }
+
+    .food-info h3 {
+        color: #304b2c;
+        font-size: 21px;
+        margin-bottom: 8px;
+    }
+
+    .food-info p {
+        color: #71806d;
+        line-height: 1.5;
+        font-size: 14px;
+        min-height: 45px;
+    }
+
+    .food-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 18px;
+    }
+
+    .price {
+        font-size: 20px;
+        font-weight: bold;
+        color: #5b873a;
+    }
+
+    .add-btn {
+        text-decoration: none;
+        background: #5f8f3e;
+        color: white;
+        padding: 10px 16px;
+        border-radius: 22px;
+        font-size: 13px;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+    .add-btn:hover {
+        background: #456d2d;
+    }
+
+    /* ================= EMPTY ================= */
+
+    .empty {
+        background: white;
+        padding: 60px 30px;
+        border-radius: 20px;
+        text-align: center;
+        box-shadow: 0 8px 25px rgba(44, 73, 38, 0.10);
+    }
+
+    .empty h2 {
+        color: #304b2c;
+        margin-bottom: 12px;
+    }
+
+    .empty p {
+        color: #72806f;
+        margin-bottom: 22px;
+    }
+
+    .empty a {
+        display: inline-block;
+        background: #5f8f3e;
+        color: white;
+        padding: 12px 25px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    /* ================= INFO BOX ================= */
+
+    .jain-info-box {
+        margin-top: 40px;
+        background: linear-gradient(135deg, #eaf4d9, #f7fbeF);
+        border: 1px solid #d4e5bc;
+        border-radius: 20px;
+        padding: 28px;
+        text-align: center;
+    }
+
+    .jain-info-box h3 {
+        color: #41672e;
+        margin-bottom: 10px;
+    }
+
+    .jain-info-box p {
+        color: #66765f;
+        line-height: 1.6;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+        background: #263b25;
+        color: white;
+        text-align: center;
+        padding: 35px 20px;
+    }
+
+    footer h2 {
+        color: #cce89d;
+        margin-bottom: 8px;
+    }
+
+    footer p {
+        color: #c5d0c1;
+        font-size: 14px;
+        margin-top: 7px;
+    }
+
+    /* ================= DRAWER ================= */
+
+    .drawer-overlay {
+            position: fixed;
+            inset: 0;
+
+            background: rgba(0, 0, 0, 0.45);
+
+            opacity: 0;
+            visibility: hidden;
+
+            transition: 0.3s;
+
+            z-index: 3000;
+        }
+
+        .drawer-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .drawer {
+            position: fixed;
+
+            top: 0;
+            right: -380px;
+
+            width: 350px;
+            max-width: 88%;
+
+            height: 100vh;
+
+            background: #ffffff;
+
+            z-index: 4000;
+
+            padding: 25px;
+
+            box-shadow: -10px 0 40px rgba(0, 0, 0, 0.15);
+
+            transition: 0.4s ease;
+
+            overflow-y: auto;
+        }
+
+        .drawer.active {
+            right: 0;
+        }
+
+        .drawer-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding-bottom: 20px;
+
+            border-bottom: 1px solid #eee;
+        }
+
+        .drawer-logo {
+            color: #ff5722;
+
+            font-size: 25px;
+            font-weight: 800;
+        }
+
+        .close-btn {
+            width: 38px;
+            height: 38px;
+
+            border: none;
+            border-radius: 50%;
+
+            background: #f5f5f5;
+            color: #333;
+
+            font-size: 22px;
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .close-btn:hover {
+            background: #ff5722;
+            color: white;
+        }
+
+        .drawer-user {
+            margin: 25px 0;
+
+            padding: 18px;
+
+            border-radius: 18px;
+
+            background: linear-gradient(
+                135deg,
+                #fff4ed,
+                #ffe3d3
+            );
+        }
+
+        .drawer-user-icon {
+            width: 50px;
+            height: 50px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #ff5722;
+            color: white;
+
+            border-radius: 50%;
+
+            font-size: 23px;
+
+            margin-bottom: 12px;
+        }
+
+        .drawer-user h3 {
+            font-size: 17px;
+            margin-bottom: 4px;
+        }
+
+        .drawer-user p {
+            font-size: 13px;
+            color: #777;
+        }
+
+        .drawer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .drawer-links a {
+            text-decoration: none;
+            color: #333;
+
+            padding: 14px 16px;
+
+            border-radius: 12px;
+
+            font-size: 16px;
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+        .drawer-links a:hover {
+            background: #fff1e9;
+            color: #ff5722;
+            padding-left: 22px;
+        }
+
+        .drawer-cart {
+            background: #ff5722 !important;
+            color: white !important;
+
+            margin-top: 10px;
+        }
+
+        .drawer-cart:hover {
+            background: #e64a19 !important;
+            color: white !important;
+        }
+
+        .drawer-footer {
+            margin-top: 35px;
+            padding-top: 20px;
+
+            border-top: 1px solid #eee;
+
+            color: #999;
+            font-size: 12px;
+
+            text-align: center;
+        }
+
+    /* ================= RESPONSIVE ================= */
+
+    @media(max-width: 950px) {
+        .food-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .nav-links {
+            display: none;
+        }
+
+        .menu-btn {
+            display: block;
+        }
+    }
+
+    @media(max-width: 650px) {
+        .food-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .hero {
+            min-height: 350px;
+            padding: 50px 7%;
+        }
+
+        .hero h1 {
+            font-size: 38px;
+        }
+
+        .section {
+            width: 92%;
+        }
+
+        .switch-box a {
+            padding: 10px 18px;
+            font-size: 13px;
+        }
+    }
+</style>
+
+
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav>
+
+    <a href="{% url 'home' %}" class="logo">
+        🍴 Foodie
+    </a>
+
+    <div class="nav-links">
+
+        <a href="{% url 'home' %}">
+            Home
+        </a>
+
+        <a href="{% url 'home' %}#categories">
+            Categories
+        </a>
+
+        <a href="{% url 'menu' %}">
+            Menu
+        </a>
+
+        <a href="{% url 'contact' %}">
+            Contact
+        </a>
+
+        <a href="{% url 'cart' %}">
+            🛒 Cart
+        </a>
+
+    </div>
+
+    <div class="nav-right">
+
+        <button
+            class="profile-btn"
+            type="button"
+            onclick="openDrawer()"
+        >
+            👤
+        </button>
+
+        <button
+            class="menu-btn"
+            type="button"
+            onclick="openDrawer()"
+        >
+            ☰
+        </button>
+
+    </div>
+
+</nav>
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+
+<div class="hero-content">
+
+    <div class="hero-tag">
+        🌿 Pure • Simple • Satvik
+    </div>
+
+    <h1>
+        Jain <span>Food Menu</span>
+    </h1>
+
+    <p>
+        Thoughtfully selected Jain-friendly dishes prepared
+        without onion and garlic, keeping every meal simple,
+        fresh and wholesome.
+    </p>
+
+    <div class="hero-note">
+        🌱 Fresh ingredients • Vegetarian • Jain-friendly choices
+    </div>
+
+</div>
+
+
+</section>
+
+<!-- ================= MENU SWITCH ================= -->
+
+<div class="switch-area">
+
+
+<div class="switch-box">
+
+    <a href="{% url 'menu' %}">
+        🍽️ Normal Menu
+    </a>
+
+    <a href="{% url 'jain_menu' %}" class="active">
+        🌿 Jain Menu
+    </a>
+
+</div>
+
+
+</div>
+
+<!-- ================= FOOD SECTION ================= -->
+
+<section class="section">
+
+
+<div class="section-heading">
+
+    <div class="mini-title">
+        Pure & Peaceful Choices
+    </div>
+
+    <h2>
+        🌿 Our Jain Friendly Foods
+    </h2>
+
+    <p>
+        Simple flavours, fresh ingredients and mindful preparation.
+    </p>
+
+</div>
+
+
+{% if foods %}
+
+<div class="food-grid">
+
+    {% for food in foods %}
+
+    <div class="food-card">
+
+        <div class="food-image">
+
+            {% if food.image %}
+
+                <img
+                    src="{{ food.image }}"
+                    alt="{{ food.name }}"
+                >
+
+            {% else %}
+
+                <img
+                    src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&q=85"
+                    alt="{{ food.name }}"
+                >
+
+            {% endif %}
+
+            <span class="jain-badge">
+                🌿 Jain Friendly
+            </span>
+
+        </div>
+
+
+        <div class="food-info">
+
+            <h3>
+                {{ food.name }}
+            </h3>
+
+            <p>
+                {{ food.description }}
+            </p>
+
+
+            <div class="food-bottom">
+
+                <span class="price">
+                    ₹{{ food.price }}
+                </span>
+
+                <a
+                    href="{% url 'add_to_cart' food.id %}"
+                    class="add-btn"
+                >
+                    🛒 Add to Cart
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+{% else %}
+
+<div class="empty">
+
+    <h2>
+        🌿 Jain Menu Coming Soon
+    </h2>
+
+    <p>
+        We are preparing delicious Jain-friendly choices for you.
+    </p>
+
+    <a href="{% url 'menu' %}">
+        Explore Normal Menu
+    </a>
+
+</div>
+
+{% endif %}
+
+
+<!-- ================= INFO ================= -->
+
+<div class="jain-info-box">
+
+    <h3>
+        🌱 A Little Note About Our Jain Menu
+    </h3>
+
+    <p>
+        Our Jain-friendly section is designed for guests looking
+        for vegetarian food prepared without onion and garlic.
+        Please confirm the exact preparation with the restaurant
+        before placing your order.
+    </p>
+
+</div>
+
+
+</section>
+
+<!-- ================= DRAWER ================= -->
+
+<div
+    class="drawer-overlay"
+    id="drawerOverlay"
+    onclick="closeDrawer()"
+></div>
+
+
+<div
+    class="drawer"
+    id="drawer"
+>
+
+    <div class="drawer-top">
+
+        <div class="drawer-logo">
+            🍴 Foodie
+        </div>
+
+        <button
+            class="close-btn"
+            onclick="closeDrawer()"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+    {% if user.is_authenticated %}
+
+        <div class="drawer-user">
+
+            <div class="drawer-user-icon">
+                👤
+            </div>
+
+            <h3>
+                Hi, {{ user.username }} 👋
+            </h3>
+
+            <p>
+                Welcome back to Foodie
+            </p>
+
+        </div>
+
+    {% else %}
+
+        <div class="drawer-user">
+
+            <div class="drawer-user-icon">
+                👤
+            </div>
+
+            <h3>
+                Welcome to Foodie
+            </h3>
+
+            <p>
+                Login to manage your orders
+            </p>
+
+        </div>
+
+    {% endif %}
+
+
+    <div class="drawer-links">
+
+        <a href="{% url 'home' %}">
+            🏠 &nbsp; Home
+        </a>
+
+        <a
+            href="#categories"
+            onclick="closeDrawer()"
+        >
+            🍽️ &nbsp; Categories
+        </a>
+
+        <a href="{% url 'menu' %}">
+            📋 &nbsp; Menu
+        </a>
+
+        <a
+            href="#foods"
+            onclick="closeDrawer()"
+        >
+            🔥 &nbsp; Popular Foods
+        </a>
+
+        <a
+            href="{% url 'contact' %}"
+            onclick="closeDrawer()"
+        >
+            📞 &nbsp; Contact
+        </a>
+
+        <a
+            href="{% url 'cart' %}"
+            class="drawer-cart"
+        >
+            🛒 &nbsp; My Cart
+        </a>
+
+
+        {% if user.is_authenticated %}
+
+            <a href="{% url 'my_orders' %}">
+    📦 &nbsp; My Orders
+</a>
+
+            <a href="/logout/">
+                🚪 &nbsp; Logout
+            </a>
+
+        {% else %}
+
+            <a href="/login/">
+                🔐 &nbsp; Login
+            </a>
+
+            <a href="/register/">
+                ✨ &nbsp; Create Account
+            </a>
+
+        {% endif %}
+
+    </div>
+
+
+    <div class="drawer-footer">
+        Delicious food. Great taste. Happy moments. ❤️
+    </div>
+
+</div>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<h2>
+    🌿 Foodie Jain Menu
+</h2>
+
+<p>
+    Simple food. Mindful choices. Happy moments. 💚
+</p>
+
+<p>
+    © 2026 Foodie. All Rights Reserved.
+</p>
+
+
+</footer>
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+function openDrawer() {
+    const drawer = document.getElementById("drawer");
+    const overlay = document.getElementById("drawerOverlay");
+
+    if (drawer) {
+        drawer.classList.add("active");
+    }
+
+    if (overlay) {
+        overlay.classList.add("active");
+    }
+
+    document.body.style.overflow = "hidden";
+}
+
+function closeDrawer() {
+    const drawer = document.getElementById("drawer");
+    const overlay = document.getElementById("drawerOverlay");
+
+    if (drawer) {
+        drawer.classList.remove("active");
+    }
+
+    if (overlay) {
+        overlay.classList.remove("active");
+    }
+
+    document.body.style.overflow = "";
+}
+
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") {
+        closeDrawer();
+    }
+});
+</script>
+
+</body>
+</html>

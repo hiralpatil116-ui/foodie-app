@@ -1,0 +1,283 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    /* Warm Background */
+    .checkout-page-bg {
+        background: radial-gradient(circle at 10% 20%, rgba(255, 107, 43, 0.12) 0%, rgba(255, 243, 235, 0.95) 90%),
+                    linear-gradient(135deg, #fff7f2 0%, #fff0e6 100%);
+        padding: 50px 15px 85px;
+        min-height: 85vh;
+    }
+
+    .checkout-inner-wrap {
+        max-width: 1040px;
+        margin: 0 auto;
+    }
+
+    .orange-sparkle-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #ffebe6;
+        color: #ff5722;
+        font-size: 13.5px;
+        font-weight: 800;
+        padding: 8px 22px;
+        border-radius: 50px;
+        margin-bottom: 18px;
+        border: 1.5px solid #ffccbe;
+        box-shadow: 0 4px 15px rgba(255, 87, 34, 0.15);
+    }
+
+    .orange-fancy-card {
+        background: #ffffff;
+        border: 2px solid #ffdfd6;
+        border-radius: 28px;
+        padding: 36px 30px;
+        box-shadow: 0 20px 50px rgba(255, 87, 34, 0.12);
+    }
+
+    .card-heading-box {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 30px;
+        padding-bottom: 18px;
+        border-bottom: 2px dashed #ffe5dd;
+    }
+
+    .bubble-emoji-circle {
+        width: 48px;
+        height: 48px;
+        border-radius: 16px;
+        background: #fff2ee;
+        color: #ff5722;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+    }
+
+    .form-group-spaced {
+        margin-bottom: 26px;
+    }
+
+    .cute-orange-label {
+        font-size: 13.5px;
+        font-weight: 800;
+        color: #ff5722;
+        margin-bottom: 10px;
+        display: block;
+        letter-spacing: 0.5px;
+    }
+
+    .cute-orange-input {
+        width: 100%;
+        background: #fffaf8;
+        border: 2px solid #ffe3db;
+        border-radius: 18px;
+        padding: 15px 20px;
+        font-size: 15px;
+        color: #2b1b17;
+        font-weight: 600;
+        outline: none;
+        transition: all 0.25s ease;
+        line-height: 1.6;
+    }
+
+    .cute-orange-input:focus {
+        background: #ffffff;
+        border-color: #ff5722;
+        box-shadow: 0 0 0 5px rgba(255, 87, 34, 0.16);
+    }
+
+    .btn-fire-order {
+        width: 100%;
+        background: linear-gradient(135deg, #ff5722 0%, #ff7043 100%);
+        color: #ffffff;
+        border: none;
+        border-radius: 18px;
+        padding: 17px 22px;
+        font-size: 17px;
+        font-weight: 800;
+        cursor: pointer;
+        box-shadow: 0 10px 28px rgba(255, 87, 34, 0.38);
+        transition: all 0.25s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 14px;
+    }
+
+    .btn-fire-order:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 14px 34px rgba(255, 87, 34, 0.48);
+    }
+
+    .summary-item-pill {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #fffaf8;
+        border: 1.5px solid #ffe8e2;
+        border-radius: 18px;
+        padding: 16px 20px;
+        margin-bottom: 16px;
+    }
+
+    .orange-total-pill {
+        background: linear-gradient(135deg, #fff3ee, #ffe7df);
+        border: 2px dashed #ffab91;
+        border-radius: 22px;
+        padding: 22px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 26px;
+    }
+</style>
+
+<div class="checkout-page-bg">
+    <div class="checkout-inner-wrap">
+        <div class="text-center mb-5">
+            <span class="orange-sparkle-pill">
+                <span>🛵</span> Almost At Your Doorstep!
+            </span>
+            <h2 class="fw-bolder" style="color: #2b1b17; font-size: 34px; margin-bottom: 12px; letter-spacing: -0.5px;">
+                Secure Checkout 🍕✨
+            </h2>
+            <p style="color: #7d635c; font-size: 15.5px; line-height: 1.7;">
+                Tell us where to bring your hot meal so we can fire up the stove!
+            </p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+            <!-- Delivery Details Column -->
+            <div class="col-lg-6">
+                <div class="orange-fancy-card">
+                    <div class="card-heading-box">
+                        <div class="bubble-emoji-circle">🏡</div>
+                        <div>
+                            <h4 class="fw-bolder mb-1 fs-5" style="color: #2b1b17;">Delivery Destination</h4>
+                            <small style="color: #8c736c;">Where should our rider drop your treats?</small>
+                        </div>
+                    </div>
+
+                    <form method="POST" action="{% url 'place_order' %}">
+                        {% csrf_token %}
+
+                        <div class="form-group-spaced">
+                            <label for="customer_name" class="cute-orange-label">YOUR SWEET NAME 🌸</label>
+                            <input
+                                type="text"
+                                class="cute-orange-input"
+                                id="customer_name"
+                                name="customer_name"
+                                placeholder="e.g. Alex Green"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group-spaced">
+                            <label for="phone" class="cute-orange-label">CONTACT NUMBER 📞</label>
+                            <input
+                                type="tel"
+                                class="cute-orange-input"
+                                id="phone"
+                                name="phone"
+                                placeholder="e.g. 9876543210"
+                                required
+                            >
+                        </div>
+
+                        <div class="form-group-spaced">
+                            <label for="address" class="cute-orange-label">COMPLETE ADDRESS 📍</label>
+                            <textarea
+                                class="cute-orange-input"
+                                id="address"
+                                name="address"
+                                rows="3"
+                                placeholder="Apartment / House No, Street, Landmark..."
+                                required
+                            ></textarea>
+                        </div>
+
+                        <div class="form-group-spaced" style="margin-bottom: 30px;">
+                            <label for="payment_method" class="cute-orange-label">HOW WILL YOU PAY? 💳</label>
+                            <select
+                                class="cute-orange-input"
+                                id="payment_method"
+                                name="payment_method"
+                                required
+                                style="cursor: pointer;"
+                            >
+                                <option value="">Choose your payment mode ✨</option>
+                                <option value="ONLINE">💳 Instant Online Pay (Card / UPI / NetBanking)</option>
+                                <option value="COD">💵 Cash on Delivery (Pay at Door)</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="btn-fire-order">
+                            <span>Confirm & Cook My Food</span>
+                            <span style="font-size: 19px;">🍴🔥</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Order Summary Column -->
+            <div class="col-lg-5">
+                <div class="orange-fancy-card">
+                    <div class="card-heading-box">
+                        <div class="bubble-emoji-circle">😋</div>
+                        <div>
+                            <h4 class="fw-bolder mb-1 fs-5" style="color: #2b1b17;">Feast Summary</h4>
+                            <small style="color: #8c736c;">Review what's on your plate</small>
+                        </div>
+                    </div>
+
+                    {% if foods %}
+                        <div style="max-height: 290px; overflow-y: auto; padding-right: 4px;">
+                            {% for item in foods %}
+                                <div class="summary-item-pill">
+                                    <div>
+                                        <div class="fw-bold" style="color: #2b1b17; font-size: 15.5px; margin-bottom: 4px;">{{ item.food.name }}</div>
+                                        <small style="color: #8c736c; font-weight: 600;">₹{{ item.food.price }} × {{ item.quantity }}</small>
+                                    </div>
+                                    <span class="fw-bolder" style="color: #ff5722; font-size: 17px;">₹{{ item.item_total }}</span>
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="orange-total-pill">
+                            <div>
+                                <span class="text-uppercase fw-bold d-block mb-1" style="color: #ff5722; font-size: 12px; letter-spacing: 0.6px;">TOTAL BILL</span>
+                                <span class="fw-bolder fs-5" style="color: #2b1b17;">Grand Total</span>
+                            </div>
+                            <span class="fw-bolder fs-2" style="color: #ff5722;">₹{{ total }}</span>
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <small style="color: #8c736c; font-weight: 600;" class="d-flex align-items-center justify-content-center gap-1">
+                                <span>🔒</span> 100% Safe, Hygienic & Contactless
+                            </small>
+                        </div>
+                    {% else %}
+                        <div class="text-center py-5">
+                            <div style="font-size: 45px; margin-bottom: 14px;">🥣</div>
+                            <h5 class="fw-bold mb-2" style="color: #2b1b17;">Your plate is empty!</h5>
+                            <p style="color: #8c736c; font-size: 14.5px;" class="mb-3">Add some delicious snacks first.</p>
+                            <a href="{% url 'menu' %}" class="btn px-4 py-2 rounded-pill fw-bold" style="background: #ff5722; color: white;">
+                                Browse Yummy Menu 🍕
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

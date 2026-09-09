@@ -1,0 +1,2744 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Foodie - Food Ordering System</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #fffaf7;
+            color: #222;
+            overflow-x: hidden;
+        }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
+
+        nav {
+            height: 76px;
+            width: 100%;
+            position: sticky;
+            top: 0;
+            z-index: 2000;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 6%;
+
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(15px);
+
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            font-size: 29px;
+            font-weight: 800;
+            color: #ff5722;
+
+            cursor: pointer;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: #222;
+        }
+
+
+        /* Desktop links */
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            position: relative;
+
+            text-decoration: none;
+            color: #333;
+
+            font-size: 15px;
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+        .nav-links a:not(.cart-link)::after {
+            content: "";
+
+            position: absolute;
+            left: 0;
+            bottom: -7px;
+
+            width: 0;
+            height: 2px;
+
+            background: #ff5722;
+
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff5722;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cart-link {
+            background: #ff5722;
+            color: white !important;
+
+            padding: 10px 18px;
+            border-radius: 25px;
+
+            box-shadow: 0 5px 15px rgba(255, 87, 34, 0.25);
+        }
+
+        .cart-link:hover {
+            background: #e64a19;
+            transform: translateY(-2px);
+        }
+
+
+        /* User profile round button */
+
+        .profile-btn {
+            width: 43px;
+            height: 43px;
+
+            border-radius: 50%;
+            border: none;
+
+            background: #fff0e9;
+            color: #ff5722;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 20px;
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .profile-btn:hover {
+            background: #ff5722;
+            color: white;
+            transform: rotate(8deg) scale(1.05);
+        }
+
+
+        /* Hamburger */
+
+        .menu-btn {
+            width: 43px;
+            height: 43px;
+
+            border: none;
+            border-radius: 50%;
+
+            background: #222;
+            color: white;
+
+            font-size: 20px;
+            cursor: pointer;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            transition: 0.3s;
+        }
+
+        .menu-btn:hover {
+            background: #ff5722;
+            transform: scale(1.05);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+
+        /* =========================
+           DRAWER
+        ========================= */
+
+        .drawer-overlay {
+            position: fixed;
+            inset: 0;
+
+            background: rgba(0, 0, 0, 0.45);
+
+            opacity: 0;
+            visibility: hidden;
+
+            transition: 0.3s;
+
+            z-index: 3000;
+        }
+
+        .drawer-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .drawer {
+            position: fixed;
+
+            top: 0;
+            right: -380px;
+
+            width: 350px;
+            max-width: 88%;
+
+            height: 100vh;
+
+            background: #ffffff;
+
+            z-index: 4000;
+
+            padding: 25px;
+
+            box-shadow: -10px 0 40px rgba(0, 0, 0, 0.15);
+
+            transition: 0.4s ease;
+
+            overflow-y: auto;
+        }
+
+        .drawer.active {
+            right: 0;
+        }
+
+        .drawer-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding-bottom: 20px;
+
+            border-bottom: 1px solid #eee;
+        }
+
+        .drawer-logo {
+            color: #ff5722;
+
+            font-size: 25px;
+            font-weight: 800;
+        }
+
+        .close-btn {
+            width: 38px;
+            height: 38px;
+
+            border: none;
+            border-radius: 50%;
+
+            background: #f5f5f5;
+            color: #333;
+
+            font-size: 22px;
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .close-btn:hover {
+            background: #ff5722;
+            color: white;
+        }
+
+        .drawer-user {
+            margin: 25px 0;
+
+            padding: 18px;
+
+            border-radius: 18px;
+
+            background: linear-gradient(
+                135deg,
+                #fff4ed,
+                #ffe3d3
+            );
+        }
+
+        .drawer-user-icon {
+            width: 50px;
+            height: 50px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #ff5722;
+            color: white;
+
+            border-radius: 50%;
+
+            font-size: 23px;
+
+            margin-bottom: 12px;
+        }
+
+        .drawer-user h3 {
+            font-size: 17px;
+            margin-bottom: 4px;
+        }
+
+        .drawer-user p {
+            font-size: 13px;
+            color: #777;
+        }
+
+        .drawer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .drawer-links a {
+            text-decoration: none;
+            color: #333;
+
+            padding: 14px 16px;
+
+            border-radius: 12px;
+
+            font-size: 16px;
+            font-weight: 600;
+
+            transition: 0.3s;
+        }
+
+        .drawer-links a:hover {
+            background: #fff1e9;
+            color: #ff5722;
+            padding-left: 22px;
+        }
+
+        .drawer-cart {
+            background: #ff5722 !important;
+            color: white !important;
+
+            margin-top: 10px;
+        }
+
+        .drawer-cart:hover {
+            background: #e64a19 !important;
+            color: white !important;
+        }
+
+        .drawer-footer {
+            margin-top: 35px;
+            padding-top: 20px;
+
+            border-top: 1px solid #eee;
+
+            color: #999;
+            font-size: 12px;
+
+            text-align: center;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 650px;
+
+            position: relative;
+
+            display: flex;
+            align-items: center;
+
+            padding: 70px 7%;
+
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(15, 15, 15, 0.88),
+                    rgba(15, 15, 15, 0.60),
+                    rgba(15, 15, 15, 0.20)
+                ),
+                url("https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=2000&q=90");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 500px;
+            height: 500px;
+
+            right: -180px;
+            top: -180px;
+
+            border-radius: 50%;
+
+            background: rgba(255, 87, 34, 0.15);
+
+            filter: blur(20px);
+        }
+
+        .hero-content {
+            width: 58%;
+
+            position: relative;
+            z-index: 2;
+
+            color: white;
+        }
+
+        .hero-small {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            background: rgba(255, 255, 255, 0.13);
+
+            border: 1px solid rgba(255, 255, 255, 0.22);
+
+            padding: 8px 15px;
+
+            border-radius: 25px;
+
+            font-size: 13px;
+            font-weight: 600;
+
+            margin-bottom: 22px;
+
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-small span {
+            color: #ff8a65;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(45px, 5.3vw, 76px);
+
+            line-height: 1.04;
+
+            font-weight: 800;
+
+            letter-spacing: -2px;
+
+            margin-bottom: 20px;
+        }
+
+        .typing-wrapper {
+            display: block;
+
+            min-height: 80px;
+
+            color: #ff7043;
+        }
+
+        .typing-text {
+            display: inline-block;
+
+            border-right: 3px solid #ff7043;
+
+            padding-right: 7px;
+
+            white-space: nowrap;
+
+            animation: blinkCursor 0.7s infinite;
+        }
+
+        @keyframes blinkCursor {
+
+            0%, 45% {
+                border-color: #ff7043;
+            }
+
+            46%, 100% {
+                border-color: transparent;
+            }
+        }
+
+        .hero-content p {
+            max-width: 650px;
+
+            color: rgba(255, 255, 255, 0.82);
+
+            font-size: 17px;
+            line-height: 1.7;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* SEARCH */
+
+        .hero-search {
+            width: min(620px, 100%);
+
+            display: flex;
+            align-items: center;
+
+            background: white;
+
+            border-radius: 50px;
+
+            padding: 7px;
+
+            margin-bottom: 25px;
+
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.22);
+        }
+
+        .search-icon {
+            width: 45px;
+            height: 45px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 22px;
+
+            color: #ff5722;
+        }
+
+        .hero-search input {
+            flex: 1;
+
+            border: none;
+            outline: none;
+
+            font-size: 15px;
+
+            color: #333;
+
+            padding: 12px 8px;
+        }
+
+        .hero-search input::placeholder {
+            color: #999;
+        }
+
+        .hero-search button {
+            border: none;
+
+            background: #ff5722;
+            color: white;
+
+            padding: 13px 23px;
+
+            border-radius: 30px;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.3s;
+        }
+
+        .hero-search button:hover {
+            background: #e64a19;
+            transform: scale(1.03);
+        }
+
+
+        /* HERO BUTTONS */
+
+        .hero-buttons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .hero-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            background: #ff5722;
+            color: white;
+
+            padding: 14px 25px;
+
+            border-radius: 30px;
+
+            text-decoration: none;
+
+            font-weight: 700;
+            font-size: 15px;
+
+            box-shadow: 0 8px 20px rgba(255, 87, 34, 0.3);
+
+            transition: 0.3s;
+        }
+
+        .hero-btn:hover {
+            background: #e64a19;
+            transform: translateY(-3px);
+        }
+
+        .hero-menu-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            padding: 13px 23px;
+
+            border: 1px solid rgba(255, 255, 255, 0.4);
+
+            color: white;
+
+            border-radius: 30px;
+
+            text-decoration: none;
+
+            font-weight: 600;
+
+            backdrop-filter: blur(8px);
+
+            transition: 0.3s;
+        }
+
+        .hero-menu-btn:hover {
+            background: white;
+            color: #333;
+        }
+
+
+        /* HERO SIDE FOOD IMAGE */
+
+        .hero-food-badge {
+            position: absolute;
+
+            right: 7%;
+            bottom: 8%;
+
+            width: 220px;
+            height: 220px;
+
+            border-radius: 50%;
+
+            overflow: hidden;
+
+            border: 5px solid rgba(255,255,255,0.35);
+
+            box-shadow:
+                0 20px 45px rgba(0,0,0,0.35),
+                0 0 0 12px rgba(255,255,255,0.08);
+
+            animation: floatFood 4s ease-in-out infinite;
+
+            z-index: 2;
+        }
+
+        .hero-food-badge img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+        }
+
+        @keyframes floatFood {
+
+            0%, 100% {
+                transform: translateY(0) rotate(-3deg);
+            }
+
+            50% {
+                transform: translateY(-16px) rotate(3deg);
+            }
+        }
+
+
+        /* =========================
+           QUICK INFO
+        ========================= */
+
+        .quick-info {
+            position: relative;
+            z-index: 5;
+
+            margin: -35px auto 0;
+
+            width: 86%;
+
+            background: white;
+
+            border-radius: 20px;
+
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            overflow: hidden;
+        }
+
+        .quick-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+
+            padding: 22px 25px;
+
+            border-right: 1px solid #eee;
+        }
+
+        .quick-item:last-child {
+            border-right: none;
+        }
+
+        .quick-icon {
+            width: 48px;
+            height: 48px;
+
+            flex-shrink: 0;
+
+            border-radius: 50%;
+
+            background: #fff1ea;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 23px;
+        }
+
+        .quick-item h4 {
+            font-size: 15px;
+            margin-bottom: 3px;
+        }
+
+        .quick-item p {
+            color: #888;
+            font-size: 12px;
+        }
+
+
+        /* =========================
+           SECTION
+        ========================= */
+
+        .section {
+            padding: 80px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+
+            margin-bottom: 45px;
+        }
+
+        .section-title .mini-title {
+            color: #ff5722;
+
+            text-transform: uppercase;
+
+            font-size: 12px;
+
+            font-weight: 800;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 8px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+
+            margin-bottom: 10px;
+
+            font-weight: 800;
+        }
+
+        .section-title p {
+            color: #777;
+
+            font-size: 15px;
+        }
+
+
+        /* =========================
+           CATEGORIES
+        ========================= */
+
+        .categories {
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 20px;
+        }
+
+        .category-card {
+            position: relative;
+
+            background: white;
+
+            padding: 28px 20px;
+
+            text-align: center;
+
+            border-radius: 20px;
+
+            box-shadow: 0 7px 25px rgba(0, 0, 0, 0.06);
+
+            text-decoration: none;
+
+            color: #222;
+
+            border: 1px solid #f5f5f5;
+
+            overflow: hidden;
+
+            transition: 0.35s;
+        }
+
+        .category-card::before {
+            content: "";
+
+            position: absolute;
+
+            width: 80px;
+            height: 80px;
+
+            right: -30px;
+            top: -30px;
+
+            border-radius: 50%;
+
+            background: #fff1e9;
+
+            transition: 0.35s;
+        }
+
+        .category-card:hover {
+            transform: translateY(-8px);
+
+            box-shadow: 0 15px 35px rgba(255, 87, 34, 0.13);
+
+            border-color: #ffe0d2;
+        }
+
+        .category-card:hover::before {
+            transform: scale(2);
+        }
+
+        .category-icon {
+            position: relative;
+            z-index: 1;
+
+            width: 82px;
+            height: 82px;
+
+            margin: 0 auto 15px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: #fff7f2;
+
+            border-radius: 50%;
+
+            font-size: 46px;
+
+            transition: 0.35s;
+        }
+
+        .category-card:hover .category-icon {
+            transform: scale(1.08) rotate(4deg);
+        }
+
+        .category-card h3 {
+            position: relative;
+            z-index: 2;
+
+            font-size: 17px;
+        }
+
+
+        /* =========================
+           POPULAR FOOD SECTION
+           NEW BACKGROUND IMAGE
+        ========================= */
+
+        .food-section {
+            position: relative;
+
+            background:
+                linear-gradient(
+                    rgba(38, 20, 12, 0.76),
+                    rgba(38, 20, 12, 0.76)
+                ),
+                url("https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=2000&q=90");
+
+            background-size: cover;
+            background-position: center;
+
+            color: white;
+
+            overflow: hidden;
+        }
+
+        .food-section::before {
+            content: "";
+
+            position: absolute;
+
+            width: 300px;
+            height: 300px;
+
+            right: -100px;
+            top: -100px;
+
+            background: rgba(255, 87, 34, 0.20);
+
+            border-radius: 50%;
+
+            filter: blur(10px);
+        }
+
+        .food-section .food-heading,
+        .food-section .food-grid {
+            position: relative;
+            z-index: 2;
+        }
+
+        .food-heading {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+
+            margin-bottom: 35px;
+        }
+
+        .food-heading .section-title {
+            text-align: left;
+            margin: 0;
+        }
+
+        .food-heading .section-title h2 {
+            color: white;
+        }
+
+        .food-heading .section-title p {
+            color: rgba(255,255,255,0.78);
+        }
+
+        .view-menu {
+            text-decoration: none;
+
+            color: white;
+
+            background: #ff5722;
+
+            padding: 11px 18px;
+
+            border-radius: 25px;
+
+            font-weight: 700;
+
+            font-size: 14px;
+
+            transition: 0.3s;
+        }
+
+        .view-menu:hover {
+            background: #e64a19;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================
+           FOOD GRID
+        ========================= */
+
+        .food-grid {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 28px;
+        }
+
+        .food-card {
+            background: white;
+
+            color: #222;
+
+            border-radius: 20px;
+
+            overflow: hidden;
+
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.20);
+
+            border: 1px solid rgba(255,255,255,0.25);
+
+            transition: 0.35s;
+
+            position: relative;
+        }
+
+        .food-card:hover {
+            transform: translateY(-8px);
+
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.28);
+        }
+
+        .food-image {
+            height: 215px;
+
+            background: #ffe8dc;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            overflow: hidden;
+
+            position: relative;
+        }
+
+        .food-image::after {
+            content: "";
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                linear-gradient(
+                    to top,
+                    rgba(0,0,0,0.20),
+                    transparent 50%
+                );
+
+            pointer-events: none;
+        }
+
+        .food-image img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+
+            transition: 0.5s;
+        }
+
+        .food-card:hover .food-image img {
+            transform: scale(1.08);
+        }
+
+
+        /* Popular badge */
+
+        .food-badge {
+            position: absolute;
+
+            top: 14px;
+            left: 14px;
+
+            z-index: 3;
+
+            background: white;
+
+            color: #ff5722;
+
+            padding: 6px 11px;
+
+            border-radius: 20px;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            box-shadow: 0 5px 12px rgba(0,0,0,0.12);
+        }
+
+
+        /* Food details */
+
+        .food-info {
+            padding: 22px;
+        }
+
+        .food-category {
+            color: #ff5722;
+
+            font-size: 11px;
+
+            font-weight: 800;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 7px;
+        }
+
+        .food-info h3 {
+            font-size: 21px;
+
+            margin-bottom: 8px;
+
+            white-space: nowrap;
+
+            overflow: hidden;
+
+            text-overflow: ellipsis;
+        }
+
+        .food-info p {
+            color: #777;
+
+            font-size: 14px;
+
+            line-height: 1.55;
+
+            min-height: 44px;
+
+            margin-bottom: 17px;
+
+            display: -webkit-box;
+
+            -webkit-line-clamp: 2;
+
+            -webkit-box-orient: vertical;
+
+            overflow: hidden;
+        }
+
+        .food-bottom {
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 10px;
+        }
+
+        .price {
+            color: #222;
+
+            font-size: 21px;
+
+            font-weight: 800;
+        }
+
+        .price::first-letter {
+            color: #ff5722;
+        }
+
+        .add-btn {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 5px;
+
+            text-decoration: none;
+
+            background: #ff5722;
+
+            color: white;
+
+            padding: 10px 15px;
+
+            border-radius: 25px;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            transition: 0.3s;
+        }
+
+        .add-btn:hover {
+            background: #e64a19;
+
+            transform: translateY(-2px);
+
+            box-shadow: 0 6px 15px rgba(255,87,34,0.25);
+        }
+
+        .empty-food {
+            text-align: center;
+
+            padding: 60px 30px;
+
+            background: white;
+
+            border-radius: 20px;
+
+            color: #777;
+
+            grid-column: 1 / -1;
+        }
+
+
+        /* =========================
+           CTA
+        ========================= */
+
+        .cta {
+            margin: 20px 7% 80px;
+
+            min-height: 300px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 50px;
+
+            border-radius: 28px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            color: white;
+
+            background:
+                linear-gradient(
+                    rgba(30, 18, 12, 0.78),
+                    rgba(30, 18, 12, 0.78)
+                ),
+                url("https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1800&q=85");
+
+            background-size: cover;
+
+            background-position: center;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta h2 {
+            font-size: 37px;
+
+            margin-bottom: 12px;
+        }
+
+        .cta p {
+            color: rgba(255,255,255,0.8);
+
+            margin-bottom: 25px;
+
+            font-size: 15px;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+
+            align-items: center;
+
+            background: white;
+
+            color: #ff5722;
+
+            padding: 13px 25px;
+
+            border-radius: 25px;
+
+            text-decoration: none;
+
+            font-weight: 800;
+
+            transition: 0.3s;
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #191919;
+
+            color: white;
+
+            padding: 55px 7% 30px;
+
+            text-align: center;
+        }
+
+        footer h2 {
+            color: #ff5722;
+
+            font-size: 27px;
+
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            color: #aaa;
+
+            font-size: 14px;
+        }
+
+        .footer-line {
+            width: 70px;
+
+            height: 3px;
+
+            background: #ff5722;
+
+            margin: 20px auto;
+        }
+
+        .copyright {
+            margin-top: 28px;
+
+            padding-top: 20px;
+
+            border-top: 1px solid #333;
+
+            color: #777;
+
+            font-size: 12px;
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 1100px) {
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .categories {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .food-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-content {
+                width: 70%;
+            }
+
+            .hero-food-badge {
+                right: 5%;
+            }
+        }
+
+
+        @media (max-width: 850px) {
+
+            nav {
+                padding: 0 5%;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero {
+                min-height: 620px;
+
+                padding: 60px 6%;
+
+                background-position: center;
+            }
+
+            .hero-content {
+                width: 100%;
+            }
+
+            .hero-content h1 {
+                font-size: 52px;
+            }
+
+            .hero-food-badge {
+                width: 170px;
+                height: 170px;
+
+                right: 4%;
+                bottom: 5%;
+            }
+
+            .quick-info {
+                width: 90%;
+            }
+
+            .categories {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+
+        @media (max-width: 650px) {
+
+            .logo {
+                font-size: 24px;
+            }
+
+            .profile-btn,
+            .menu-btn {
+                width: 39px;
+                height: 39px;
+            }
+
+            .hero {
+                min-height: 670px;
+
+                padding: 50px 5%;
+            }
+
+            .hero-small {
+                font-size: 11px;
+            }
+
+            .hero-content h1 {
+                font-size: 43px;
+
+                letter-spacing: -1px;
+            }
+
+            .typing-wrapper {
+                min-height: 53px;
+            }
+
+            .hero-content p {
+                font-size: 14px;
+            }
+
+            .hero-food-badge {
+                width: 125px;
+                height: 125px;
+
+                opacity: 0.85;
+            }
+
+            .hero-search {
+                border-radius: 18px;
+
+                padding: 6px;
+            }
+
+            .search-icon {
+                width: 35px;
+            }
+
+            .hero-search input {
+                width: 100%;
+
+                min-width: 0;
+
+                font-size: 13px;
+            }
+
+            .hero-search button {
+                padding: 11px 14px;
+            }
+
+            .hero-buttons {
+                flex-wrap: wrap;
+            }
+
+            .hero-btn,
+            .hero-menu-btn {
+                padding: 12px 18px;
+
+                font-size: 13px;
+            }
+
+            .quick-info {
+                grid-template-columns: 1fr;
+
+                margin-top: -25px;
+            }
+
+            .quick-item {
+                border-right: none;
+
+                border-bottom: 1px solid #eee;
+            }
+
+            .quick-item:last-child {
+                border-bottom: none;
+            }
+
+            .section {
+                padding: 60px 5%;
+            }
+
+            .section-title h2 {
+                font-size: 30px;
+            }
+
+            .categories {
+                grid-template-columns: repeat(2, 1fr);
+
+                gap: 13px;
+            }
+
+            .category-card {
+                padding: 20px 10px;
+            }
+
+            .category-icon {
+                width: 65px;
+                height: 65px;
+
+                font-size: 37px;
+            }
+
+            .category-card h3 {
+                font-size: 14px;
+            }
+
+            .food-heading {
+                display: block;
+            }
+
+            .food-heading .section-title {
+                margin-bottom: 15px;
+            }
+
+            .food-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .food-image {
+                height: 220px;
+            }
+
+            .cta {
+                margin: 10px 5% 60px;
+
+                padding: 40px 20px;
+            }
+
+            .cta h2 {
+                font-size: 29px;
+            }
+
+            .drawer {
+                width: 320px;
+            }
+        }
+
+
+        @media (max-width: 400px) {
+
+            .hero-content h1 {
+                font-size: 37px;
+            }
+
+            .categories {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero-search button {
+                font-size: 12px;
+
+                padding: 10px 12px;
+            }
+
+            .hero-food-badge {
+                width: 105px;
+                height: 105px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVBAR
+========================= -->
+
+<nav>
+
+    <div class="logo">
+        🍴 <span>Foodie</span>
+    </div>
+
+
+    <div class="nav-links">
+
+        <a href="{% url 'home' %}">
+            Home
+        </a>
+
+        <a href="#categories">
+            Categories
+        </a>
+
+        <a href="{% url 'menu' %}">
+            Menu
+        </a> 
+
+       <a href="{% url 'contact' %}">Contact</a>
+
+        <a href="{% url 'cart' %}" class="cart-link">
+            🛒 Cart
+        </a>
+
+    </div>
+
+
+    <div class="nav-right">
+
+        <button
+            class="profile-btn"
+            onclick="openDrawer()"
+        >
+            👤
+        </button>
+
+        <button
+            class="menu-btn"
+            onclick="openDrawer()"
+        >
+            ☰
+        </button>
+
+    </div>
+
+</nav>
+
+
+
+<!-- =========================
+     DRAWER
+========================= -->
+
+<div
+    class="drawer-overlay"
+    id="drawerOverlay"
+    onclick="closeDrawer()"
+></div>
+
+
+<div
+    class="drawer"
+    id="drawer"
+>
+
+    <div class="drawer-top">
+
+        <div class="drawer-logo">
+            🍴 Foodie
+        </div>
+
+        <button
+            class="close-btn"
+            onclick="closeDrawer()"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+    {% if user.is_authenticated %}
+
+        <div class="drawer-user">
+
+            <div class="drawer-user-icon">
+                👤
+            </div>
+
+            <h3>
+                Hi, {{ user.username }} 👋
+            </h3>
+
+            <p>
+                Welcome back to Foodie
+            </p>
+
+        </div>
+
+    {% else %}
+
+        <div class="drawer-user">
+
+            <div class="drawer-user-icon">
+                👤
+            </div>
+
+            <h3>
+                Welcome to Foodie
+            </h3>
+
+            <p>
+                Login to manage your orders
+            </p>
+
+        </div>
+
+    {% endif %}
+
+
+    <div class="drawer-links">
+
+        <a href="{% url 'home' %}">
+            🏠 &nbsp; Home
+        </a>
+
+        <a
+            href="#categories"
+            onclick="closeDrawer()"
+        >
+            🍽️ &nbsp; Categories
+        </a>
+
+        <a href="{% url 'menu' %}">
+            📋 &nbsp; Menu
+        </a>
+
+        <a
+            href="#foods"
+            onclick="closeDrawer()"
+        >
+            🔥 &nbsp; Popular Foods
+        </a>
+
+        <a
+            href="{% url 'contact' %}"
+            onclick="closeDrawer()"
+        >
+            📞 &nbsp; Contact
+        </a>
+
+        <a
+            href="{% url 'cart' %}"
+            class="drawer-cart"
+        >
+            🛒 &nbsp; My Cart
+        </a>
+
+
+        {% if user.is_authenticated %}
+
+            <a href="{% url 'my_orders' %}">
+    📦 &nbsp; My Orders
+</a>
+
+            <a href="/logout/">
+                🚪 &nbsp; Logout
+            </a>
+
+        {% else %}
+
+            <a href="/login/">
+                🔐 &nbsp; Login
+            </a>
+
+            <a href="/register/">
+                ✨ &nbsp; Create Account
+            </a>
+
+        {% endif %}
+
+    </div>
+
+
+    <div class="drawer-footer">
+        Delicious food. Great taste. Happy moments. ❤️
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+
+    <div class="hero-content">
+
+        <div class="hero-small">
+            🔥
+            <span>Freshly prepared</span>
+            · Delivered to your doorstep
+        </div>
+
+
+        <h1>
+
+            Delicious Food
+
+            <span class="typing-wrapper">
+
+                <span
+                    class="typing-text"
+                    id="typingText"
+                >
+                    Delivered Fast!
+                </span>
+
+            </span>
+
+        </h1>
+
+
+        <p>
+            Your cravings deserve something delicious.
+            Discover fresh meals, tasty snacks and your favourite food
+            — all in one place with Foodie.
+        </p>
+
+
+        <!-- SEARCH BAR -->
+
+        <form
+            class="hero-search"
+            method="GET"
+            action="{% url 'menu' %}"
+        >
+
+            <div class="search-icon">
+                🔍
+            </div>
+
+            <input
+                type="text"
+                name="search"
+                placeholder="Search pizza, burger, pasta, dessert..."
+                aria-label="Search food"
+            >
+
+            <button type="submit">
+                Search
+            </button>
+
+        </form>
+
+
+        <div class="hero-buttons">
+
+            <a
+                href="{% url 'menu' %}"
+                class="hero-btn"
+            >
+                Order Now 🍔
+            </a>
+
+
+            <a
+                href="#categories"
+                class="hero-menu-btn"
+            >
+                Explore Food ↓
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- REAL FOOD IMAGE ON SIDE -->
+
+    <div class="hero-food-badge">
+
+        <img
+            src="https://img.freepik.com/premium-photo/veggie-burger-delight-black-background_960396-123726.jpg"
+            alt="Delicious Pizza"
+        >
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     QUICK INFO
+========================= -->
+
+<div class="quick-info">
+
+
+    <div class="quick-item">
+
+        <div class="quick-icon">
+            🚀
+        </div>
+
+        <div>
+
+            <h4>
+                Fast Delivery
+            </h4>
+
+            <p>
+                Fresh food at your doorstep
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="quick-item">
+
+        <div class="quick-icon">
+            🥗
+        </div>
+
+        <div>
+
+            <h4>
+                Fresh & Tasty
+            </h4>
+
+            <p>
+                Made with quality ingredients
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="quick-item">
+
+        <div class="quick-icon">
+            ❤️
+        </div>
+
+        <div>
+
+            <h4>
+                Made For You
+            </h4>
+
+            <p>
+                Your favourite meals, your way
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================
+     CATEGORIES
+========================= -->
+
+<section
+    class="section"
+    id="categories"
+>
+
+
+    <div class="section-title">
+
+        <div class="mini-title">
+            What's on your mind?
+        </div>
+
+        <h2>
+            Explore Categories
+        </h2>
+
+        <p>
+            Pick your favourite and satisfy your cravings
+        </p>
+
+    </div>
+
+
+    <div class="categories">
+
+
+        <a
+            href="{% url 'menu' %}?category=Pizza"
+            class="category-card"
+        >
+
+            <div class="category-icon">
+                🍕
+            </div>
+
+            <h3>
+                Pizza
+            </h3>
+
+        </a>
+
+
+        <a
+            href="{% url 'menu' %}?category=Burger"
+            class="category-card"
+        >
+
+            <div class="category-icon">
+                🍔
+            </div>
+
+            <h3>
+                Burgers
+            </h3>
+
+        </a>
+
+
+        <a
+            href="{% url 'menu' %}?category=Indian"
+            class="category-card"
+        >
+
+            <div class="category-icon">
+                🍛
+            </div>
+
+            <h3>
+                Indian Food
+            </h3>
+
+        </a>
+
+
+        <a
+            href="{% url 'menu' %}?category=Chinese"
+            class="category-card"
+        >
+
+            <div class="category-icon">
+                🥡
+            </div>
+
+            <h3>
+                Chinese Food
+            </h3>
+
+        </a>
+
+
+        <a
+            href="{% url 'menu' %}?category=Pasta"
+            class="category-card"
+        >
+
+            <div class="category-icon">
+                🍝
+            </div>
+
+            <h3>
+                Pasta
+            </h3>
+
+        </a>
+
+
+        <a
+            href="{% url 'menu' %}?category=Dessert"
+            class="category-card"
+        >
+
+            <div class="category-icon">
+                🍰
+            </div>
+
+            <h3>
+                Desserts
+            </h3>
+
+        </a>
+
+
+        <a
+            href="{% url 'menu' %}?category=Drinks"
+            class="category-card"
+        >
+
+            <div class="category-icon">
+                🥤
+            </div>
+
+            <h3>
+                Drinks
+            </h3>
+
+        </a>
+
+
+        <a
+            href="{% url 'menu' %}?category=jain"
+            class="category-card"
+        >
+
+            <div class="category-icon">
+                🍝
+            </div>
+
+            <h3>
+                Jain friendly
+            </h3>
+
+        </a>
+
+
+        <a
+            href="{% url 'menu' %}"
+            class="category-card"
+        >
+
+            <div class="category-icon">
+                🍽️
+            </div>
+
+            <h3>
+                View All
+            </h3>
+
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     POPULAR FOODS
+========================= -->
+
+<section
+    class="section food-section"
+    id="foods"
+>
+
+
+    <div class="food-heading">
+
+
+        <div class="section-title">
+
+            <div class="mini-title">
+                Customer favourites
+            </div>
+
+            <h2>
+                Popular Foods 🔥
+            </h2>
+
+            <p>
+                Delicious choices waiting for you
+            </p>
+
+        </div>
+
+
+        <a
+            href="{% url 'menu' %}"
+            class="view-menu"
+        >
+            View Full Menu →
+        </a>
+
+    </div>
+
+
+
+    <div class="food-grid">
+
+
+        {% for food in foods %}
+
+
+        <div class="food-card">
+
+
+            <div class="food-image">
+
+                <div class="food-badge">
+                    ⭐ Popular
+                </div>
+
+
+                {% if food.image %}
+
+                    <!-- DATABASE IMAGE -->
+
+                    <img
+                        src="{{ food.image.url }}"
+                        alt="{{ food.name }}"
+                    >
+
+                {% else %}
+
+
+                    <!-- FALLBACK REAL FOOD IMAGES -->
+
+                    {% if food.category == "Pizza" %}
+
+                        <img
+                            src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=900&q=85"
+                            alt="Pizza"
+                        >
+
+                    {% elif food.category == "Burger" %}
+
+                        <img
+                            src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=85"
+                            alt="Burger"
+                        >
+
+                    {% elif food.category == "Indian" %}
+
+                        <img
+                            src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?auto=format&fit=crop&w=900&q=85"
+                            alt="Indian Food"
+                        >
+
+                    {% elif food.category == "Chinese" %}
+
+                        <img
+                            src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=900&q=85"
+                            alt="Chinese Food"
+                        >
+
+                    {% elif food.category == "Pasta" %}
+
+                        <img
+                            src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=900&q=85"
+                            alt="Pasta"
+                        >
+
+                    {% elif food.category == "Dessert" %}
+
+                        <img
+                            src="https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=900&q=85"
+                            alt="Dessert"
+                        >
+
+                    {% else %}
+
+                        <img
+                            src="https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=900&q=85"
+                            alt="Drinks"
+                        >
+
+                    {% endif %}
+
+
+                {% endif %}
+
+            </div>
+
+
+
+            <div class="food-info">
+
+
+                <div class="food-category">
+                    {{ food.category }}
+                </div>
+
+
+                <h3>
+                    {{ food.name }}
+                </h3>
+
+
+                <p>
+                    {{ food.description }}
+                </p>
+
+
+                <div class="food-bottom">
+
+
+                    <span class="price">
+                        ₹{{ food.price }}
+                    </span>
+
+
+                    <a
+                        href="{% url 'add_to_cart' food.id %}"
+                        class="add-btn"
+                    >
+                        🛒 Add
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        {% empty %}
+
+
+        <div class="empty-food">
+
+            <div style="font-size:55px; margin-bottom:15px;">
+                🍽️
+            </div>
+
+            <h2>
+                No food available
+            </h2>
+
+            <p>
+                Please add available food from the admin panel.
+            </p>
+
+        </div>
+
+
+        {% endfor %}
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     CTA
+========================= -->
+
+<section class="cta">
+
+
+    <div class="cta-content">
+
+        <h2>
+            Hungry? We've Got You Covered! 🍴
+        </h2>
+
+        <p>
+            From cheesy pizzas to delicious Indian meals,
+            find something you'll love today.
+        </p>
+
+        <a
+            href="{% url 'menu' %}"
+            class="cta-btn"
+        >
+            Explore Menu →
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer id="contact">
+
+    <h2>
+        🍴 Foodie
+    </h2>
+
+    <div class="footer-line"></div>
+
+    <p>
+        Delicious food delivered to your doorstep.
+    </p>
+
+    <div class="copyright">
+        © 2026 Foodie. All Rights Reserved.
+    </div>
+
+</footer>
+
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+
+    /* =========================
+       DRAWER
+    ========================= */
+
+
+
+(function () {
+
+    /* =========================
+       DRAWER
+    ========================= */
+
+    const foodieDrawer =
+        document.getElementById("drawer");
+
+    const foodieDrawerOverlay =
+        document.getElementById("drawerOverlay");
+
+
+    window.openDrawer = function () {
+
+        foodieDrawer.classList.add("active");
+
+        foodieDrawerOverlay.classList.add("active");
+
+        document.body.style.overflow = "hidden";
+
+    };
+
+
+    window.closeDrawer = function () {
+
+        foodieDrawer.classList.remove("active");
+
+        foodieDrawerOverlay.classList.remove("active");
+
+        document.body.style.overflow = "";
+
+    };
+
+
+    /* Close drawer with ESC */
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (event.key === "Escape") {
+
+                window.closeDrawer();
+
+            }
+
+        }
+    );
+
+
+
+    /* =========================
+       TYPING ANIMATION
+    ========================= */
+
+    const foodieTypingText =
+        document.getElementById("typingText");
+
+
+    const foodieTypingWords = [
+
+        "Delivered Fast!",
+
+        "Fresh & Tasty!",
+
+        "Made With Love!",
+
+        "Just For You!",
+
+        "Ready To Order?"
+
+    ];
+
+
+    let foodieWordIndex = 0;
+
+    let foodieCharIndex = 0;
+
+    let foodieDeleting = false;
+
+
+    function foodieTypeEffect() {
+
+        if (!foodieTypingText) {
+            return;
+        }
+
+
+        const currentWord =
+            foodieTypingWords[foodieWordIndex];
+
+
+        if (!foodieDeleting) {
+
+            foodieTypingText.textContent =
+                currentWord.substring(
+                    0,
+                    foodieCharIndex + 1
+                );
+
+
+            foodieCharIndex++;
+
+
+            if (
+                foodieCharIndex ===
+                currentWord.length
+            ) {
+
+                foodieDeleting = true;
+
+                setTimeout(
+                    foodieTypeEffect,
+                    1700
+                );
+
+                return;
+
+            }
+
+
+        } else {
+
+            foodieTypingText.textContent =
+                currentWord.substring(
+                    0,
+                    foodieCharIndex - 1
+                );
+
+
+            foodieCharIndex--;
+
+
+            if (foodieCharIndex === 0) {
+
+                foodieDeleting = false;
+
+                foodieWordIndex++;
+
+
+                if (
+                    foodieWordIndex >=
+                    foodieTypingWords.length
+                ) {
+
+                    foodieWordIndex = 0;
+
+                }
+
+            }
+
+        }
+
+
+        const foodieSpeed =
+            foodieDeleting ? 55 : 90;
+
+
+        setTimeout(
+            foodieTypeEffect,
+            foodieSpeed
+        );
+
+    }
+
+
+    foodieTypeEffect();
+
+
+
+    /* =========================
+       POPULAR FOODS
+       ONLY 6 RANDOM CARDS
+       REFRESH EVERY FEW SECONDS
+    ========================= */
+
+    function setupRandomPopularFoods() {
+
+        const foodieGrid =
+            document.querySelector(".food-grid");
+
+
+        if (!foodieGrid) {
+            return;
+        }
+
+
+        const foodieCards =
+            Array.from(
+                foodieGrid.querySelectorAll(".food-card")
+            );
+
+
+        if (foodieCards.length === 0) {
+            return;
+        }
+
+
+        function showRandomFoods() {
+
+            /* Hide all cards */
+
+            foodieCards.forEach(function (card) {
+
+                card.style.display = "none";
+
+            });
+
+
+            /*
+             * Fisher-Yates Shuffle
+             * This gives proper random selection
+             */
+
+            const shuffledCards =
+                [...foodieCards];
+
+
+            for (
+                let i = shuffledCards.length - 1;
+                i > 0;
+                i--
+            ) {
+
+                const randomIndex =
+                    Math.floor(
+                        Math.random() * (i + 1)
+                    );
+
+
+                [
+                    shuffledCards[i],
+                    shuffledCards[randomIndex]
+                ] = [
+                    shuffledCards[randomIndex],
+                    shuffledCards[i]
+                ];
+
+            }
+
+
+            /* Show only 6 cards */
+
+            shuffledCards
+                .slice(
+                    0,
+                    Math.min(6, shuffledCards.length)
+                )
+                .forEach(function (card) {
+
+                    card.style.display = "block";
+
+                });
+
+        }
+
+
+        /*
+         * First random 6 cards
+         * immediately show
+         */
+
+        showRandomFoods();
+
+
+        /*
+         * Change random 6 cards
+         * every 5 seconds
+         */
+
+        setInterval(
+            showRandomFoods,
+            5000
+        );
+
+    }
+
+
+    /*
+     * Start after complete page load
+     */
+
+    if (
+        document.readyState === "loading"
+    ) {
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            setupRandomPopularFoods
+        );
+
+    } else {
+
+        setupRandomPopularFoods();
+
+    }
+
+
+})();
+
+</script>
+
+
+
+
+</body>
+
+</html>
+

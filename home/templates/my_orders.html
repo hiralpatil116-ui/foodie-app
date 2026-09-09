@@ -1,0 +1,511 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+    /* Warm Foodie Dotted Background */
+    .orders-page-bg {
+        background-color: #fff6f0;
+        background-image: 
+            radial-gradient(#ffccbc 1.2px, transparent 1.2px),
+            radial-gradient(#ffe0b2 1.2px, #fff6f0 1.2px);
+        background-size: 32px 32px;
+        background-position: 0 0, 16px 16px;
+        padding: 50px 16px 90px;
+        min-height: 90vh;
+    }
+
+    .orders-inner-wrap {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+
+    /* 3 Distinct Colorful Top Cards Grid */
+    .top-cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        margin-bottom: 40px;
+    }
+
+    .color-card {
+        border-radius: 24px;
+        padding: 24px 22px;
+        position: relative;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .color-card:hover {
+        transform: translateY(-4px);
+    }
+
+    /* Card 1: Warm Sunset Orange */
+    .card-orange-sunset {
+        background: linear-gradient(145deg, #ffffff 0%, #fff2ec 100%);
+        border: 2px solid #ffab91;
+        box-shadow: 0 12px 30px rgba(255, 87, 34, 0.12);
+    }
+    .badge-orange-tag {
+        background: #ff5722;
+        color: #ffffff;
+    }
+    .icon-box-orange {
+        background: #ffebe6;
+        border: 1.5px solid #ffccbe;
+        color: #ff5722;
+    }
+
+    /* Card 2: Fresh Mint Green */
+    .card-mint-fresh {
+        background: linear-gradient(145deg, #ffffff 0%, #f0fdf4 100%);
+        border: 2px solid #a7f3d0;
+        box-shadow: 0 12px 30px rgba(16, 185, 129, 0.10);
+    }
+    .badge-mint-tag {
+        background: #10b981;
+        color: #ffffff;
+    }
+    .icon-box-mint {
+        background: #ecfdf5;
+        border: 1.5px solid #a7f3d0;
+        color: #10b981;
+    }
+
+    /* Card 3: Sweet Berry Pink */
+    .card-berry-sweet {
+        background: linear-gradient(145deg, #ffffff 0%, #fdf2f8 100%);
+        border: 2px solid #fbcfe8;
+        box-shadow: 0 12px 30px rgba(236, 72, 153, 0.10);
+    }
+    .badge-berry-tag {
+        background: #ec4899;
+        color: #ffffff;
+    }
+    .icon-box-berry {
+        background: #fdf2f8;
+        border: 1.5px solid #fbcfe8;
+        color: #ec4899;
+    }
+
+    .card-top-tag {
+        display: inline-block;
+        font-size: 11px;
+        font-weight: 800;
+        padding: 4px 12px;
+        border-radius: 50px;
+        letter-spacing: 0.5px;
+        width: fit-content;
+        margin-bottom: 14px;
+    }
+
+    .card-header-flex {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 12px;
+    }
+
+    .card-icon-round {
+        width: 48px;
+        height: 48px;
+        min-width: 48px;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+    }
+
+    .card-title-bold {
+        font-size: 17px;
+        font-weight: 800;
+        color: #2b1b17;
+        line-height: 1.3;
+    }
+
+    .card-body-txt {
+        font-size: 13.5px;
+        color: #64748b;
+        font-weight: 600;
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    /* Main Order Card */
+    .fancy-order-card {
+        background: #ffffff;
+        border-radius: 28px;
+        padding: 32px 28px;
+        border: 2px solid #ffe3db;
+        box-shadow: 0 16px 40px rgba(255, 87, 34, 0.08);
+        margin-bottom: 30px;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .fancy-order-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 20px 48px rgba(255, 87, 34, 0.14);
+    }
+
+    .order-card-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding-bottom: 20px;
+        border-bottom: 2px dashed #ffe5dd;
+    }
+
+    .order-title-txt {
+        font-size: 20px;
+        font-weight: 800;
+        color: #2b1b17;
+        margin-bottom: 6px;
+    }
+
+    .order-date-sub {
+        font-size: 13.5px;
+        color: #8c736c;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .status-badge {
+        padding: 8px 18px;
+        border-radius: 50px;
+        font-size: 13.5px;
+        font-weight: 800;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .status-badge.placed {
+        background: #fff4e6;
+        color: #d97706;
+        border: 1.5px solid #fde68a;
+    }
+
+    .status-badge.prep {
+        background: #eff6ff;
+        color: #2563eb;
+        border: 1.5px solid #bfdbfe;
+    }
+
+    .status-badge.delivery {
+        background: #f5f3ff;
+        color: #7c3aed;
+        border: 1.5px solid #ddd6fe;
+    }
+
+    .status-badge.delivered {
+        background: #eaf8ed;
+        color: #16a34a;
+        border: 1.5px solid #bbf7d0;
+    }
+
+    .status-badge.cancelled {
+        background: #fff0f2;
+        color: #e11d48;
+        border: 1.5px solid #fecdd3;
+    }
+
+    /* Step Tracker */
+    .timeline-tracker-box {
+        background: #fffbf9;
+        border: 1.5px solid #ffebe5;
+        border-radius: 20px;
+        padding: 22px 20px;
+        margin: 24px 0;
+    }
+
+    .timeline-steps {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .step-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 7px 15px;
+        border-radius: 12px;
+        font-size: 13px;
+        font-weight: 700;
+        background: #f1f5f9;
+        color: #94a3b8;
+    }
+
+    .step-pill.done {
+        background: #eaf8ed;
+        color: #16a34a;
+    }
+
+    .step-pill.active {
+        background: #ffebe6;
+        color: #ff5722;
+        border: 1px solid #ffccbe;
+        box-shadow: 0 4px 10px rgba(255, 87, 34, 0.15);
+    }
+
+    /* Dish Items */
+    .order-dish-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 18px;
+        background: #fafbfc;
+        border-radius: 16px;
+        margin-bottom: 10px;
+        border: 1px solid #f1f5f9;
+    }
+
+    .dish-name-bold {
+        font-size: 15.5px;
+        font-weight: 700;
+        color: #2b1b17;
+        margin-bottom: 4px;
+    }
+
+    .dish-qty-txt {
+        color: #8c736c;
+        font-size: 13px;
+        font-weight: 600;
+    }
+
+    .dish-price-bold {
+        font-weight: 800;
+        color: #ff5722;
+        font-size: 16px;
+    }
+
+    .order-card-footer {
+        border-top: 2px dashed #ffe5dd;
+        padding-top: 22px;
+        margin-top: 18px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .footer-meta-info {
+        font-size: 14px;
+        line-height: 1.8;
+        color: #64748b;
+    }
+
+    .footer-meta-info strong {
+        color: #1e293b;
+    }
+
+    .total-grand-txt {
+        font-size: 24px;
+        font-weight: 900;
+        color: #ff5722;
+        text-align: right;
+    }
+
+    .cute-cancel-btn {
+        background: #fff0ed;
+        color: #e11d48;
+        border: 1.5px solid #fecdd3;
+        border-radius: 14px;
+        padding: 9px 18px;
+        font-size: 13.5px;
+        font-weight: 800;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    .cute-cancel-btn:hover {
+        background: #e11d48;
+        color: #ffffff;
+        box-shadow: 0 4px 14px rgba(225, 29, 72, 0.25);
+    }
+
+    .empty-orders-card {
+        background: #ffffff;
+        border: 2px solid #ffdfd6;
+        border-radius: 30px;
+        padding: 70px 20px;
+        text-align: center;
+        box-shadow: 0 20px 50px rgba(255, 87, 34, 0.12);
+    }
+</style>
+
+<div class="orders-page-bg">
+    <div class="orders-inner-wrap">
+
+        <!-- 3 Distinct Colorful Top Cards -->
+        <div class="top-cards-grid">
+            <!-- Card 1: Warm Orange -->
+            <div class="color-card card-orange-sunset">
+                <div>
+                    <span class="card-top-tag badge-orange-tag">HOT & CRISP 🔥</span>
+                    <div class="card-header-flex">
+                        <div class="card-icon-round icon-box-orange">🍳</div>
+                        <div class="card-title-bold">Freshly Prepared</div>
+                    </div>
+                    <p class="card-body-txt">Cooked on order with sizzling spices and pure love just for you.</p>
+                </div>
+            </div>
+
+            <!-- Card 2: Fresh Mint -->
+            <div class="color-card card-mint-fresh">
+                <div>
+                    <span class="card-top-tag badge-mint-tag">SPEEDY RIDER 🛵</span>
+                    <div class="card-header-flex">
+                        <div class="card-icon-round icon-box-mint">⚡</div>
+                        <div class="card-title-bold">Express Transit</div>
+                    </div>
+                    <p class="card-body-txt">Insulated thermal bags to keep your food steaming hot till your doorstep.</p>
+                </div>
+            </div>
+
+            <!-- Card 3: Sweet Berry Pink -->
+            <div class="color-card card-berry-sweet">
+                <div>
+                    <span class="card-top-tag badge-berry-tag">100% HAPPINESS 💖</span>
+                    <div class="card-header-flex">
+                        <div class="card-icon-round icon-box-berry">✨</div>
+                        <div class="card-title-bold">Pure Delight</div>
+                    </div>
+                    <p class="card-body-txt">Unpack your cravings, take that first bite, and enjoy every flavor!</p>
+                </div>
+            </div>
+        </div>
+
+        {% if orders %}
+            {% for order in orders %}
+            <div class="fancy-order-card">
+                <!-- Header -->
+                <div class="order-card-header">
+                    <div>
+                        <div class="order-title-txt">Order #{{ order.id }} 🍴</div>
+                        <div class="order-date-sub">
+                            <span>🕒</span> Placed on {{ order.order_date|date:"d M Y, h:i A" }}
+                        </div>
+                    </div>
+
+                    <div>
+                        {% if order.status == "Order Placed" %}
+                            <span class="status-badge placed">🟠 Order Placed</span>
+                        {% elif order.status == "Preparing" %}
+                            <span class="status-badge prep">🍳 Sizzling in Kitchen</span>
+                        {% elif order.status == "Out for Delivery" %}
+                            <span class="status-badge delivery">🛵 Out For Delivery</span>
+                        {% elif order.status == "Delivered" %}
+                            <span class="status-badge delivered">✓ Delivered</span>
+                        {% elif order.status == "Cancelled" %}
+                            <span class="status-badge cancelled">✕ Cancelled</span>
+                        {% else %}
+                            <span class="status-badge placed">{{ order.status }}</span>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Live Progress Tracker -->
+                <div class="timeline-tracker-box">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="fw-bold" style="color: #2b1b17; font-size: 14.5px;">Live Journey Tracker</span>
+                        
+                        {% if order.status == "Order Placed" %}
+                        <form method="POST" action="{% url 'cancel_order' order.id %}" style="display:inline;">
+                            {% csrf_token %}
+                            <button
+                                type="submit"
+                                class="cute-cancel-btn"
+                                onclick="return confirm('Are you sure you want to cancel this order?');"
+                            >
+                                Cancel Order ✕
+                            </button>
+                        </form>
+                        {% endif %}
+                    </div>
+
+                    <div class="timeline-steps">
+                        {% if order.status == "Order Placed" %}
+                            <span class="step-pill active">🟠 1. Placed</span>
+                            <span class="step-pill">⚪ 2. Cooking</span>
+                            <span class="step-pill">⚪ 3. In Transit</span>
+                            <span class="step-pill">⚪ 4. Arrived</span>
+                        {% elif order.status == "Preparing" %}
+                            <span class="step-pill done">✓ 1. Placed</span>
+                            <span class="step-pill active">🍳 2. Cooking</span>
+                            <span class="step-pill">⚪ 3. In Transit</span>
+                            <span class="step-pill">⚪ 4. Arrived</span>
+                        {% elif order.status == "Out for Delivery" %}
+                            <span class="step-pill done">✓ 1. Placed</span>
+                            <span class="step-pill done">✓ 2. Cooking</span>
+                            <span class="step-pill active">🛵 3. In Transit</span>
+                            <span class="step-pill">⚪ 4. Arrived</span>
+                        {% elif order.status == "Delivered" %}
+                            <span class="step-pill done">✓ 1. Placed</span>
+                            <span class="step-pill done">✓ 2. Cooking</span>
+                            <span class="step-pill done">✓ 3. In Transit</span>
+                            <span class="step-pill done">🎉 4. Enjoy Meal!</span>
+                        {% elif order.status == "Cancelled" %}
+                            <span class="step-pill" style="background:#fff0ed; color:#e11d48; width:100%; justify-content:center; padding:10px;">
+                                ❌ This order was cancelled
+                            </span>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Items Ordered -->
+                <div class="mb-3">
+                    <span class="fw-bold d-block mb-2" style="color: #8c736c; font-size: 13px; letter-spacing: 0.5px;">YOUR CRAVINGS</span>
+                    {% for item in order.items.all %}
+                    <div class="order-dish-row">
+                        <div>
+                            <div class="dish-name-bold">{{ item.food.name }}</div>
+                            <div class="dish-qty-txt">Quantity: {{ item.quantity }} portion</div>
+                        </div>
+                        <div class="dish-price-bold">
+                            ₹{{ item.price }}
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Footer Summary -->
+                <div class="order-card-footer">
+                    <div class="footer-meta-info">
+                        <div>Payment Method: <strong>{{ order.payment_method }}</strong></div>
+                        <div>Delivery Address: <strong>{{ order.address }}</strong></div>
+                    </div>
+                    <div>
+                        <small class="text-muted fw-bold d-block text-end mb-1">TOTAL BILL</small>
+                        <div class="total-grand-txt">₹{{ order.total_amount }}</div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        {% else %}
+            <!-- Empty State -->
+            <div class="empty-orders-card">
+                <div style="font-size: 60px; margin-bottom: 16px;">🍱</div>
+                <h3 class="fw-bolder mb-2" style="color: #2b1b17;">No Orders Placed Yet!</h3>
+                <p class="mb-4" style="color: #7d635c; font-size: 15.5px; line-height: 1.7;">
+                    Your tummy deserves something special today. Let's get some food on the way!
+                </p>
+                <a href="{% url 'menu' %}" class="btn px-4 py-3 rounded-pill fw-bold" style="background: linear-gradient(135deg, #ff5722, #ff7043); color: white; box-shadow: 0 8px 24px rgba(255, 87, 34, 0.4);">
+                    🍕 Explore Our Yummy Menu
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

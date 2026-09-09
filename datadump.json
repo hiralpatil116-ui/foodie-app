@@ -1,0 +1,2064 @@
+[
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$1500000$o52oiKi2UkUIhbeFCvnmxU$XwEuI8yRL0eCRjP6wS2d+ZmZpP6D50JPHSmKtlBf4jE=",
+        "last_login": "2026-09-07T17:43:38.496Z",
+        "is_superuser": true,
+        "username": "HiralPatil",
+        "first_name": "",
+        "last_name": "",
+        "email": "hiralpatil116@gmail.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2026-09-02T08:56:50.025Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$1500000$7U9fi4Q4FN660mnzAUbw0I$OGXvlgyTGuUx6O6tK9r80dNCTZx2OCrOReVjSGPhSzg=",
+        "last_login": "2026-09-02T16:59:08.122Z",
+        "is_superuser": false,
+        "username": "nita patil",
+        "first_name": "",
+        "last_name": "",
+        "email": "nita0701@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-09-02T16:58:36.518Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$1500000$rcylDDF0wFylzSbTACfXUM$yVoCR238da9urQKm9+9dQJQYZZ/Wce94b7hS0hDfUn8=",
+        "last_login": "2026-09-06T11:40:02.949Z",
+        "is_superuser": false,
+        "username": "dimple",
+        "first_name": "",
+        "last_name": "",
+        "email": "hiralpatil66@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-09-06T11:40:02.002Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$1500000$RheeJLdR1zlYNpmnXxvOuC$NOrhACcv+4WGnuS3L4o9At0SqYQ+SIHs5DTIqXvtFFU=",
+        "last_login": "2026-09-07T17:14:09.525Z",
+        "is_superuser": false,
+        "username": "test_user",
+        "first_name": "",
+        "last_name": "",
+        "email": "testuser1@gmail.com",
+        "is_staff": false,
+        "is_active": true,
+        "date_joined": "2026-09-06T19:15:18.935Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "0knch8xy7chqd74lg12bv5twgkcaa3i1",
+    "fields": {
+        "session_data": "eyJjYXJ0Ijp7IjIiOjIsIjUiOjF9fQ:1x23SB:yrTB4_IycIrdE9z_dagcRC9Hp4BOjgmnzKhK62qeccc",
+        "expire_date": "2026-09-17T09:09:51.529Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "4k1wlphjvhix0lqdqy26n7ar36zg1ssd",
+    "fields": {
+        "session_data": ".eJxVjMsOwiAQRf-FtSFAZ4Bx6d5vIMOjUjU0Ke3K-O_apAvd3nPOfYnA21rD1ssSpizOQovT7xY5PUrbQb5zu80yzW1dpih3RR60y-ucy_NyuH8HlXv91pC8AhhGTdEqBMUFwRvN5BR6T9Z5GI1BzFo5skSsrc1YCIyDIWUr3h-ZkzXh:1x3dNX:WEKv4neV6WTTqVz4XqPgtjXToeEeXPf6pSabbimgxfw",
+        "expire_date": "2026-09-21T17:43:35.172Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "frkoxsqrmh7uos8gt4jrlmw92jc2kckx",
+    "fields": {
+        "session_data": ".eJxVjDsOgzAQBe_iOrJss_4sZfqcAa0_xCSRkWyoEHcPSBRJ-2bebGygdcnD2lIdpsh6Jtntd_MU3qmcIL6oPGce5rLUyfNT4Rdt_DHH9Llf7l8gU8vHG4ITAN0o0RuhQVDS4JQktEI7h8Y6GJXSOkph0SCSNCbqhKAsdCGaIxqoLqzf9v0Lwyc5LQ:1x3djh:bXG8Plp9wQyh-jn7k6iRgz4mCrRyxSSAuv5te-Jypyg",
+        "expire_date": "2026-09-21T18:06:29.199Z"
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "gf34tw535f5nybd35ka96fil16ir5g9g",
+    "fields": {
+        "session_data": ".eJxVjDsOgzAQBe-ydWTZZv1Zl-k5A1psE5NEIGGoEHdPkGho38y8HSIvK4QdlIOgjwd0vK2l22peujFBAAW3ref4ydMJ0pun1yziPK3L2ItTERetop1T_j4v93ZQuJZ_jdFLxGZQ1FtpUHI26LVictJ4T9Z5HLQ2JinpyBKxsjaZTKgdNjFZOH6zaTpF:1x3cJ4:gQcIsKWTk076HiQ77QL2z1u8jGBX8QiqJvNTBHnAUDg",
+        "expire_date": "2026-09-21T16:34:54.363Z"
+    }
+},
+{
+    "model": "home.food",
+    "pk": 1,
+    "fields": {
+        "name": "Margherita Pizza",
+        "category": "Pizza",
+        "price": "249.00",
+        "description": "Delicious cheesy Margherita pizza",
+        "image": "food_images/klassische-pizza-margherita.jpg",
+        "available": true
+    }
+},
+{
+    "model": "home.food",
+    "pk": 2,
+    "fields": {
+        "name": "Cheese Burger",
+        "category": "Burger",
+        "price": "199.00",
+        "description": "Juicy crispy patty topped with melted cheese, fresh vegetables and flavorful burger sauce.",
+        "image": "food_images/75bbbb36ed0002e96dcca2475ec48664.jpg",
+        "available": true
+    }
+},
+{
+    "model": "home.food",
+    "pk": 3,
+    "fields": {
+        "name": "Farmhouse Pizza",
+        "category": "Pizza",
+        "price": "349.00",
+        "description": "Delicious pizza loaded with fresh vegetables, capsicum, onion, tomato and melted cheese.",
+        "image": "food_images/heart-shaped-farmhouse-pizza-wooden-plate_13329-666.avif",
+        "available": true
+    }
+},
+{
+    "model": "home.food",
+    "pk": 4,
+    "fields": {
+        "name": "Veg Burger",
+        "category": "Burger",
+        "price": "149.00",
+        "description": "Crispy vegetable patty served with fresh lettuce, tomato, onion and creamy sauce in a soft bun.",
+        "image": "food_images/wp11267667.jpg",
+        "available": true
+    }
+},
+{
+    "model": "home.food",
+    "pk": 5,
+    "fields": {
+        "name": "Paneer Tikka",
+        "category": "Indian",
+        "price": "349.00",
+        "description": "Soft paneer cubes marinated with Indian spices and grilled with colourful vegetables.",
+        "image": "food_images/b5e885eebeb896bd54eb5388962ce557.jpg",
+        "available": true
+    }
+},
+{
+    "model": "home.food",
+    "pk": 6,
+    "fields": {
+        "name": "Veg Biryani",
+        "category": "Indian",
+        "price": "449.00",
+        "description": "Fragrant basmati rice cooked with fresh vegetables, herbs and traditional Indian spices.",
+        "image": "food_images/vegbiryani.webp",
+        "available": true
+    }
+},
+{
+    "model": "home.food",
+    "pk": 7,
+    "fields": {
+        "name": "White Sauce Pasta",
+        "category": "Pasta",
+        "price": "299.00",
+        "description": "Creamy pasta prepared with rich white sauce, herbs and fresh vegetables.",
+        "image": "food_images/whitesausepasta.png",
+        "available": true
+    }
+},
+{
+    "model": "home.food",
+    "pk": 8,
+    "fields": {
+        "name": "Red Sauce Pasta",
+        "category": "Pasta",
+        "price": "300.00",
+        "description": "Delicious pasta cooked in a tangy tomato sauce with herbs and Italian seasoning.",
+        "image": "food_images/redsausepasta.jpg",
+        "available": true
+    }
+},
+{
+    "model": "home.food",
+    "pk": 9,
+    "fields": {
+        "name": "Chocolate Cake",
+        "category": "Dessert",
+        "price": "399.00",
+        "description": "Soft and moist chocolate cake topped with rich chocolate cream for a delicious dessert.",
+        "image": "food_images/chocolatecakeimage.jpg",
+        "available": true
+    }
+},
+{
+    "model": "home.food",
+    "pk": 10,
+    "fields": {
+        "name": "Gulab Jamun",
+        "category": "Dessert",
+        "price": "199.00",
+        "description": "Soft and sweet milk-based dumplings soaked in warm sugar syrup.",
+        "image": "food_images/gulabjamun.avif",
+        "available": true
+    }
+},
+{
+    "model": "home.food",
+    "pk": 11,
+    "fields": {
+        "name": "Mango Shake",
+        "category": "Drinks",
+        "price": "200.00",
+        "description": "Fresh mango blended with chilled milk to create a creamy and refreshing drink.",
+        "image": "food_images/mangoshake.jpg",
+        "available": true
+    }
+},
+{
+    "model": "home.food",
+    "pk": 12,
+    "fields": {
+        "name": "Cold Coffee",
+        "category": "Drinks",
+        "price": "149.00",
+        "description": "Chilled creamy coffee blended with milk and served refreshing and smooth.",
+        "image": "food_images/coldcoffee.jpg",
+        "available": true
+    }
+},
+{
+    "model": "home.food",
+    "pk": 13,
+    "fields": {
+        "name": "Jain Paneer Tikka",
+        "category": "Jain",
+        "price": "180.00",
+        "description": "Soft paneer marinated with mild spices and grilled to perfection, prepared in a Jain-friendly style.",
+        "image": "https://img.freepik.com/premium-photo/paneer-tikka-with-chutney_1177965-13810.jpg",
+        "available": true
+    }
+},
+{
+    "model": "home.food",
+    "pk": 14,
+    "fields": {
+        "name": "Jain Veg Biryani",
+        "category": "Jain",
+        "price": "160.00",
+        "description": "Fragrant basmati rice cooked with Jain-friendly vegetables and aromatic spices",
+        "image": "https://img.freepik.com/premium-photo/indian-saffron-rice-indian-food-photography_960396-360.jpg?w=740",
+        "available": true
+    }
+},
+{
+    "model": "home.food",
+    "pk": 15,
+    "fields": {
+        "name": "Jain Masala Dosa",
+        "category": "Jain",
+        "price": "120.00",
+        "description": "Crispy dosa served with a delicious Jain-friendly potato filling and chutney.",
+        "image": "https://b.zmtcdn.com/data/pictures/chains/1/21620041/b693a67faa3106e2c944cf26772b4fcd.jpeg",
+        "available": true
+    }
+},
+{
+    "model": "home.food",
+    "pk": 16,
+    "fields": {
+        "name": "Jain Pav Bhaji",
+        "category": "Jain",
+        "price": "140.00",
+        "description": "Soft pav served with flavorful Jain-style mixed vegetable bhaji",
+        "image": "https://panditpavbhaji.com/wp-content/uploads/2023/06/Jain-Pav-Bhaji.jpg",
+        "available": true
+    }
+},
+{
+    "model": "home.food",
+    "pk": 17,
+    "fields": {
+        "name": "Jain Hakka Noodles",
+        "category": "Jain",
+        "price": "150.00",
+        "description": "Stir-fried noodles with fresh Jain-friendly vegetables and light Chinese seasoning.",
+        "image": "https://i.pinimg.com/736x/29/d2/26/29d226315c097a08513d905a30ebba24.jpg",
+        "available": true
+    }
+},
+{
+    "model": "home.food",
+    "pk": 18,
+    "fields": {
+        "name": "Jain Cheese Pizza",
+        "category": "Jain",
+        "price": "220.00",
+        "description": "Cheesy pizza topped with Jain-friendly vegetables and Italian herbs",
+        "image": "https://jainfoodrecipe.com/wp-content/uploads/2025/08/Chopped-Cheese-Pizza-Topping.jpg",
+        "available": true
+    }
+},
+{
+    "model": "home.food",
+    "pk": 19,
+    "fields": {
+        "name": "Jain Margherita Pizza",
+        "category": "Jain",
+        "price": "200.00",
+        "description": "Classic cheesy tomato pizza prepared in a Jain-friendly style.",
+        "image": "https://jainfoodrecipe.com/wp-content/uploads/2025/08/Homemade-Margherita-Pizza.jpg",
+        "available": true
+    }
+},
+{
+    "model": "home.food",
+    "pk": 20,
+    "fields": {
+        "name": "Jain Chocolate Cake",
+        "category": "Jain",
+        "price": "130.00",
+        "description": "Soft and moist chocolate cake made with rich chocolate flavor.",
+        "image": "https://static.vecteezy.com/system/resources/thumbnails/026/349/563/small_2x/indulgent-chocolate-cake-slice-on-wooden-plate-generated-by-ai-free-photo.jpg",
+        "available": true
+    }
+},
+{
+    "model": "home.food",
+    "pk": 21,
+    "fields": {
+        "name": "Jain Vanilla Ice Cream",
+        "category": "Jain",
+        "price": "100.00",
+        "description": "Smooth and creamy vanilla ice cream, perfect for a sweet finish.",
+        "image": "https://tse2.mm.bing.net/th/id/OIP.1kqhEZ8NWem53dCmDHaSZAHaEO?r=0&rs=1&pid=ImgDetMain&o=7&rm=3",
+        "available": true
+    }
+},
+{
+    "model": "home.order",
+    "pk": 1,
+    "fields": {
+        "user": null,
+        "customer_name": "Hiral Patil",
+        "phone": "06353441318",
+        "address": "Ved Road\r\n68",
+        "payment_method": "UPI",
+        "total_amount": "298.00",
+        "order_date": "2026-09-02T16:10:38.846Z",
+        "status": "Order Placed"
+    }
+},
+{
+    "model": "home.order",
+    "pk": 2,
+    "fields": {
+        "user": null,
+        "customer_name": "Hiral Patil",
+        "phone": "06353441318",
+        "address": "Ved Road\r\n68",
+        "payment_method": "COD",
+        "total_amount": "300.00",
+        "order_date": "2026-09-02T16:57:47.009Z",
+        "status": "Order Placed"
+    }
+},
+{
+    "model": "home.order",
+    "pk": 3,
+    "fields": {
+        "user": null,
+        "customer_name": "nita patil",
+        "phone": "9874563214",
+        "address": "Old girls hostel, d y Patil university ambi",
+        "payment_method": "COD",
+        "total_amount": "249.00",
+        "order_date": "2026-09-02T17:00:21.873Z",
+        "status": "Order Placed"
+    }
+},
+{
+    "model": "home.order",
+    "pk": 4,
+    "fields": {
+        "user": null,
+        "customer_name": "nita patil",
+        "phone": "9874563214",
+        "address": "Ved Road\r\n68",
+        "payment_method": "COD",
+        "total_amount": "498.00",
+        "order_date": "2026-09-03T04:27:48.140Z",
+        "status": "Order Placed"
+    }
+},
+{
+    "model": "home.order",
+    "pk": 5,
+    "fields": {
+        "user": [
+            "HiralPatil"
+        ],
+        "customer_name": "Hiral Patil",
+        "phone": "06353441318",
+        "address": "Old girls hostel, d y Patil university ambi",
+        "payment_method": "COD",
+        "total_amount": "1644.00",
+        "order_date": "2026-09-03T09:31:11.353Z",
+        "status": "Order Placed"
+    }
+},
+{
+    "model": "home.order",
+    "pk": 6,
+    "fields": {
+        "user": [
+            "HiralPatil"
+        ],
+        "customer_name": "Hiral Patil",
+        "phone": "06353441318",
+        "address": "Old girls hostel, d y Patil university ambi",
+        "payment_method": "COD",
+        "total_amount": "249.00",
+        "order_date": "2026-09-03T09:45:39.284Z",
+        "status": "Order Placed"
+    }
+},
+{
+    "model": "home.order",
+    "pk": 7,
+    "fields": {
+        "user": [
+            "HiralPatil"
+        ],
+        "customer_name": "Hiral Patil",
+        "phone": "06353441318",
+        "address": "patil wada, shelgaon. bhadli bk, jalgaon\r\n68-b, triveny nagar soc. , ved road , katargam, surat",
+        "payment_method": "UPI",
+        "total_amount": "199.00",
+        "order_date": "2026-09-03T09:48:20.581Z",
+        "status": "Order Placed"
+    }
+},
+{
+    "model": "home.order",
+    "pk": 8,
+    "fields": {
+        "user": [
+            "HiralPatil"
+        ],
+        "customer_name": "kartik",
+        "phone": "9632587412",
+        "address": "surat",
+        "payment_method": "COD",
+        "total_amount": "249.00",
+        "order_date": "2026-09-03T09:49:29.627Z",
+        "status": "Order Placed"
+    }
+},
+{
+    "model": "home.order",
+    "pk": 9,
+    "fields": {
+        "user": [
+            "HiralPatil"
+        ],
+        "customer_name": "kartik",
+        "phone": "9632587412",
+        "address": "Ved Road\r\n68",
+        "payment_method": "COD",
+        "total_amount": "448.00",
+        "order_date": "2026-09-03T18:19:05.822Z",
+        "status": "Order Placed"
+    }
+},
+{
+    "model": "home.order",
+    "pk": 10,
+    "fields": {
+        "user": null,
+        "customer_name": "kartik",
+        "phone": "9632587412",
+        "address": "Ved Road\r\n68",
+        "payment_method": "COD",
+        "total_amount": "149.00",
+        "order_date": "2026-09-04T04:47:57.874Z",
+        "status": "Order Placed"
+    }
+},
+{
+    "model": "home.order",
+    "pk": 11,
+    "fields": {
+        "user": [
+            "HiralPatil"
+        ],
+        "customer_name": "ruchira",
+        "phone": "8523697412",
+        "address": "rk girls hostel, d y Patil university ambi",
+        "payment_method": "COD",
+        "total_amount": "249.00",
+        "order_date": "2026-09-04T05:02:24.386Z",
+        "status": "Order Placed"
+    }
+},
+{
+    "model": "home.order",
+    "pk": 12,
+    "fields": {
+        "user": [
+            "HiralPatil"
+        ],
+        "customer_name": "ruchira",
+        "phone": "8523697412",
+        "address": "rk hostel pune",
+        "payment_method": "UPI",
+        "total_amount": "448.00",
+        "order_date": "2026-09-04T10:15:05.165Z",
+        "status": "Order Placed"
+    }
+},
+{
+    "model": "home.order",
+    "pk": 13,
+    "fields": {
+        "user": [
+            "HiralPatil"
+        ],
+        "customer_name": "ruchira",
+        "phone": "8523697412",
+        "address": "Old girls hostel, d y Patil university ambi",
+        "payment_method": "COD",
+        "total_amount": "808.00",
+        "order_date": "2026-09-04T18:10:02.056Z",
+        "status": "Order Placed"
+    }
+},
+{
+    "model": "home.order",
+    "pk": 14,
+    "fields": {
+        "user": [
+            "dimple"
+        ],
+        "customer_name": "dimple",
+        "phone": "9353441318",
+        "address": "vesu Road\r\n68",
+        "payment_method": "UPI",
+        "total_amount": "130.00",
+        "order_date": "2026-09-06T11:42:11.948Z",
+        "status": "Order Placed"
+    }
+},
+{
+    "model": "home.order",
+    "pk": 15,
+    "fields": {
+        "user": [
+            "dimple"
+        ],
+        "customer_name": "aarushi",
+        "phone": "8521463795",
+        "address": "kharadi,pune",
+        "payment_method": "COD",
+        "total_amount": "160.00",
+        "order_date": "2026-09-06T11:57:41.162Z",
+        "status": "Order Placed"
+    }
+},
+{
+    "model": "home.order",
+    "pk": 16,
+    "fields": {
+        "user": [
+            "dimple"
+        ],
+        "customer_name": "dimple",
+        "phone": "963258741254",
+        "address": "56,akash rowhouse, surat",
+        "payment_method": "COD",
+        "total_amount": "199.00",
+        "order_date": "2026-09-06T12:39:20.605Z",
+        "status": "Cancelled"
+    }
+},
+{
+    "model": "home.order",
+    "pk": 17,
+    "fields": {
+        "user": [
+            "dimple"
+        ],
+        "customer_name": "Hiral Patil",
+        "phone": "06353441318",
+        "address": "Ved Road\r\n68",
+        "payment_method": "COD",
+        "total_amount": "249.00",
+        "order_date": "2026-09-06T15:34:57.946Z",
+        "status": "Order Placed"
+    }
+},
+{
+    "model": "home.order",
+    "pk": 18,
+    "fields": {
+        "user": [
+            "dimple"
+        ],
+        "customer_name": "Hiral Patil",
+        "phone": "06353441318",
+        "address": "Old girls hostel, d y Patil university ambi",
+        "payment_method": "COD",
+        "total_amount": "120.00",
+        "order_date": "2026-09-06T15:36:21.147Z",
+        "status": "Order Placed"
+    }
+},
+{
+    "model": "home.order",
+    "pk": 19,
+    "fields": {
+        "user": [
+            "dimple"
+        ],
+        "customer_name": "hiral",
+        "phone": "7894561235",
+        "address": "123,aaa,b",
+        "payment_method": "COD",
+        "total_amount": "249.00",
+        "order_date": "2026-09-06T16:55:39.574Z",
+        "status": "Preparing"
+    }
+},
+{
+    "model": "home.order",
+    "pk": 20,
+    "fields": {
+        "user": [
+            "dimple"
+        ],
+        "customer_name": "dimple_test",
+        "phone": "7894561235",
+        "address": "123,aaa,www",
+        "payment_method": "COD",
+        "total_amount": "200.00",
+        "order_date": "2026-09-06T18:29:00.163Z",
+        "status": "Preparing"
+    }
+},
+{
+    "model": "home.order",
+    "pk": 21,
+    "fields": {
+        "user": [
+            "dimple"
+        ],
+        "customer_name": "test_order",
+        "phone": "9632587412",
+        "address": "12345,yuiop",
+        "payment_method": "COD",
+        "total_amount": "399.00",
+        "order_date": "2026-09-06T19:00:06.189Z",
+        "status": "Cancelled"
+    }
+},
+{
+    "model": "home.order",
+    "pk": 22,
+    "fields": {
+        "user": [
+            "test_user"
+        ],
+        "customer_name": "test_user",
+        "phone": "9654783215",
+        "address": "test home,123",
+        "payment_method": "COD",
+        "total_amount": "399.00",
+        "order_date": "2026-09-06T19:16:05.892Z",
+        "status": "Cancelled"
+    }
+},
+{
+    "model": "home.order",
+    "pk": 23,
+    "fields": {
+        "user": [
+            "test_user"
+        ],
+        "customer_name": "test_user",
+        "phone": "9654783215",
+        "address": "test home,123",
+        "payment_method": "UPI",
+        "total_amount": "200.00",
+        "order_date": "2026-09-06T19:17:05.800Z",
+        "status": "Delivered"
+    }
+},
+{
+    "model": "home.order",
+    "pk": 24,
+    "fields": {
+        "user": [
+            "HiralPatil"
+        ],
+        "customer_name": "Hiral Patil",
+        "phone": "06353441318",
+        "address": "Ved Road\r\n68",
+        "payment_method": "COD",
+        "total_amount": "349.00",
+        "order_date": "2026-09-07T18:06:29.178Z",
+        "status": "Out for Delivery"
+    }
+},
+{
+    "model": "home.orderitem",
+    "pk": 1,
+    "fields": {
+        "order": 1,
+        "food": 4,
+        "quantity": 2,
+        "price": "149.00"
+    }
+},
+{
+    "model": "home.orderitem",
+    "pk": 2,
+    "fields": {
+        "order": 2,
+        "food": 8,
+        "quantity": 1,
+        "price": "300.00"
+    }
+},
+{
+    "model": "home.orderitem",
+    "pk": 3,
+    "fields": {
+        "order": 3,
+        "food": 1,
+        "quantity": 1,
+        "price": "249.00"
+    }
+},
+{
+    "model": "home.orderitem",
+    "pk": 4,
+    "fields": {
+        "order": 4,
+        "food": 1,
+        "quantity": 2,
+        "price": "249.00"
+    }
+},
+{
+    "model": "home.orderitem",
+    "pk": 5,
+    "fields": {
+        "order": 5,
+        "food": 1,
+        "quantity": 1,
+        "price": "249.00"
+    }
+},
+{
+    "model": "home.orderitem",
+    "pk": 6,
+    "fields": {
+        "order": 5,
+        "food": 2,
+        "quantity": 3,
+        "price": "199.00"
+    }
+},
+{
+    "model": "home.orderitem",
+    "pk": 7,
+    "fields": {
+        "order": 5,
+        "food": 5,
+        "quantity": 1,
+        "price": "349.00"
+    }
+},
+{
+    "model": "home.orderitem",
+    "pk": 8,
+    "fields": {
+        "order": 5,
+        "food": 6,
+        "quantity": 1,
+        "price": "449.00"
+    }
+},
+{
+    "model": "home.orderitem",
+    "pk": 9,
+    "fields": {
+        "order": 6,
+        "food": 1,
+        "quantity": 1,
+        "price": "249.00"
+    }
+},
+{
+    "model": "home.orderitem",
+    "pk": 10,
+    "fields": {
+        "order": 7,
+        "food": 2,
+        "quantity": 1,
+        "price": "199.00"
+    }
+},
+{
+    "model": "home.orderitem",
+    "pk": 11,
+    "fields": {
+        "order": 8,
+        "food": 1,
+        "quantity": 1,
+        "price": "249.00"
+    }
+},
+{
+    "model": "home.orderitem",
+    "pk": 12,
+    "fields": {
+        "order": 9,
+        "food": 1,
+        "quantity": 1,
+        "price": "249.00"
+    }
+},
+{
+    "model": "home.orderitem",
+    "pk": 13,
+    "fields": {
+        "order": 9,
+        "food": 2,
+        "quantity": 1,
+        "price": "199.00"
+    }
+},
+{
+    "model": "home.orderitem",
+    "pk": 14,
+    "fields": {
+        "order": 10,
+        "food": 4,
+        "quantity": 1,
+        "price": "149.00"
+    }
+},
+{
+    "model": "home.orderitem",
+    "pk": 15,
+    "fields": {
+        "order": 11,
+        "food": 1,
+        "quantity": 1,
+        "price": "249.00"
+    }
+},
+{
+    "model": "home.orderitem",
+    "pk": 16,
+    "fields": {
+        "order": 12,
+        "food": 1,
+        "quantity": 1,
+        "price": "249.00"
+    }
+},
+{
+    "model": "home.orderitem",
+    "pk": 17,
+    "fields": {
+        "order": 12,
+        "food": 2,
+        "quantity": 1,
+        "price": "199.00"
+    }
+},
+{
+    "model": "home.orderitem",
+    "pk": 18,
+    "fields": {
+        "order": 13,
+        "food": 2,
+        "quantity": 1,
+        "price": "199.00"
+    }
+},
+{
+    "model": "home.orderitem",
+    "pk": 19,
+    "fields": {
+        "order": 13,
+        "food": 6,
+        "quantity": 1,
+        "price": "449.00"
+    }
+},
+{
+    "model": "home.orderitem",
+    "pk": 20,
+    "fields": {
+        "order": 13,
+        "food": 14,
+        "quantity": 1,
+        "price": "160.00"
+    }
+},
+{
+    "model": "home.orderitem",
+    "pk": 21,
+    "fields": {
+        "order": 14,
+        "food": 20,
+        "quantity": 1,
+        "price": "130.00"
+    }
+},
+{
+    "model": "home.orderitem",
+    "pk": 22,
+    "fields": {
+        "order": 15,
+        "food": 14,
+        "quantity": 1,
+        "price": "160.00"
+    }
+},
+{
+    "model": "home.orderitem",
+    "pk": 23,
+    "fields": {
+        "order": 16,
+        "food": 2,
+        "quantity": 1,
+        "price": "199.00"
+    }
+},
+{
+    "model": "home.orderitem",
+    "pk": 24,
+    "fields": {
+        "order": 17,
+        "food": 1,
+        "quantity": 1,
+        "price": "249.00"
+    }
+},
+{
+    "model": "home.orderitem",
+    "pk": 25,
+    "fields": {
+        "order": 18,
+        "food": 15,
+        "quantity": 1,
+        "price": "120.00"
+    }
+},
+{
+    "model": "home.orderitem",
+    "pk": 26,
+    "fields": {
+        "order": 19,
+        "food": 1,
+        "quantity": 1,
+        "price": "249.00"
+    }
+},
+{
+    "model": "home.orderitem",
+    "pk": 27,
+    "fields": {
+        "order": 20,
+        "food": 19,
+        "quantity": 1,
+        "price": "200.00"
+    }
+},
+{
+    "model": "home.orderitem",
+    "pk": 28,
+    "fields": {
+        "order": 21,
+        "food": 9,
+        "quantity": 1,
+        "price": "399.00"
+    }
+},
+{
+    "model": "home.orderitem",
+    "pk": 29,
+    "fields": {
+        "order": 22,
+        "food": 9,
+        "quantity": 1,
+        "price": "399.00"
+    }
+},
+{
+    "model": "home.orderitem",
+    "pk": 30,
+    "fields": {
+        "order": 23,
+        "food": 19,
+        "quantity": 1,
+        "price": "200.00"
+    }
+},
+{
+    "model": "home.orderitem",
+    "pk": 31,
+    "fields": {
+        "order": 24,
+        "food": 3,
+        "quantity": 1,
+        "price": "349.00"
+    }
+},
+{
+    "model": "home.contactmessage",
+    "pk": 1,
+    "fields": {
+        "name": "Hiral Patil",
+        "email": "hiralpatil116@gmail.com",
+        "subject": "regarding food",
+        "message": "food is delicious.",
+        "created_at": "2026-09-06T16:36:05.370Z",
+        "is_read": true
+    }
+},
+{
+    "model": "home.contactmessage",
+    "pk": 2,
+    "fields": {
+        "name": "Hiral Patil",
+        "email": "hiralpatil116@gmail.com",
+        "subject": "regarding food",
+        "message": "good and delicious food.",
+        "created_at": "2026-09-06T16:36:27.070Z",
+        "is_read": true
+    }
+},
+{
+    "model": "home.contactmessage",
+    "pk": 3,
+    "fields": {
+        "name": "test_user",
+        "email": "testuser1@gmail.com",
+        "subject": "food delivery",
+        "message": "food is good ,fastest deleivery.",
+        "created_at": "2026-09-06T19:19:34.531Z",
+        "is_read": false
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+        "action_time": "2026-09-02T10:23:13.981Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "food"
+        ],
+        "object_id": "1",
+        "object_repr": "Margherita Pizza",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+        "action_time": "2026-09-02T10:30:20.754Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "food"
+        ],
+        "object_id": "2",
+        "object_repr": "Cheese Burger",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+        "action_time": "2026-09-02T10:30:55.557Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "food"
+        ],
+        "object_id": "3",
+        "object_repr": "Farmhouse Pizza",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+        "action_time": "2026-09-02T10:31:18.793Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "food"
+        ],
+        "object_id": "4",
+        "object_repr": "Veg Burger",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+        "action_time": "2026-09-02T10:32:02.033Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "food"
+        ],
+        "object_id": "5",
+        "object_repr": "Paneer Tikka",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+        "action_time": "2026-09-02T10:32:24.923Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "food"
+        ],
+        "object_id": "6",
+        "object_repr": "Veg Biryani",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+        "action_time": "2026-09-02T10:32:47.602Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "food"
+        ],
+        "object_id": "7",
+        "object_repr": "White Sauce Pasta",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 8,
+    "fields": {
+        "action_time": "2026-09-02T10:33:21.456Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "food"
+        ],
+        "object_id": "8",
+        "object_repr": "Red Sauce Pasta",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 9,
+    "fields": {
+        "action_time": "2026-09-02T10:33:56.422Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "food"
+        ],
+        "object_id": "9",
+        "object_repr": "Chocolate Cake",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 10,
+    "fields": {
+        "action_time": "2026-09-02T10:34:41.480Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "food"
+        ],
+        "object_id": "10",
+        "object_repr": "Gulab Jamun",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 11,
+    "fields": {
+        "action_time": "2026-09-02T10:35:09.614Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "food"
+        ],
+        "object_id": "11",
+        "object_repr": "Mango Shake",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 12,
+    "fields": {
+        "action_time": "2026-09-02T10:35:32.030Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "food"
+        ],
+        "object_id": "12",
+        "object_repr": "Cold Coffee",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 13,
+    "fields": {
+        "action_time": "2026-09-04T17:11:38.722Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "food"
+        ],
+        "object_id": "13",
+        "object_repr": "Jain Paneer Tikka",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 14,
+    "fields": {
+        "action_time": "2026-09-04T17:14:03.167Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "food"
+        ],
+        "object_id": "14",
+        "object_repr": "Jain Veg Biryani",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 15,
+    "fields": {
+        "action_time": "2026-09-04T17:20:37.369Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "food"
+        ],
+        "object_id": "15",
+        "object_repr": "Jain Masala Dosa",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 16,
+    "fields": {
+        "action_time": "2026-09-04T17:30:12.736Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "food"
+        ],
+        "object_id": "16",
+        "object_repr": "Jain Pav Bhaji",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 17,
+    "fields": {
+        "action_time": "2026-09-04T17:32:24.173Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "food"
+        ],
+        "object_id": "17",
+        "object_repr": "Jain Hakka Noodles",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 18,
+    "fields": {
+        "action_time": "2026-09-04T17:35:14.053Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "food"
+        ],
+        "object_id": "18",
+        "object_repr": "Jain Cheese Pizza",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 19,
+    "fields": {
+        "action_time": "2026-09-04T17:36:48.705Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "food"
+        ],
+        "object_id": "19",
+        "object_repr": "Jain Margherita Pizza",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 20,
+    "fields": {
+        "action_time": "2026-09-04T17:38:43.646Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "food"
+        ],
+        "object_id": "20",
+        "object_repr": "Jain Chocolate Cake",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 21,
+    "fields": {
+        "action_time": "2026-09-04T17:42:22.108Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "food"
+        ],
+        "object_id": "21",
+        "object_repr": "Jain Vanilla Ice Cream",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 22,
+    "fields": {
+        "action_time": "2026-09-06T11:15:31.103Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "food"
+        ],
+        "object_id": "21",
+        "object_repr": "Jain Vanilla Ice Cream",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 23,
+    "fields": {
+        "action_time": "2026-09-06T11:20:55.110Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "food"
+        ],
+        "object_id": "17",
+        "object_repr": "Jain Hakka Noodles",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 24,
+    "fields": {
+        "action_time": "2026-09-06T16:38:16.714Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "contactmessage"
+        ],
+        "object_id": "1",
+        "object_repr": "Hiral Patil - regarding food",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is read\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 25,
+    "fields": {
+        "action_time": "2026-09-06T16:38:24.294Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "contactmessage"
+        ],
+        "object_id": "2",
+        "object_repr": "Hiral Patil - regarding food",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Is read\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 26,
+    "fields": {
+        "action_time": "2026-09-06T16:57:02.106Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "order"
+        ],
+        "object_id": "18",
+        "object_repr": "Order #18 - Hiral Patil",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Status\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 27,
+    "fields": {
+        "action_time": "2026-09-06T17:14:03.951Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "food"
+        ],
+        "object_id": "20",
+        "object_repr": "Jain Chocolate Cake",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Available\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 28,
+    "fields": {
+        "action_time": "2026-09-06T17:14:03.952Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "food"
+        ],
+        "object_id": "18",
+        "object_repr": "Jain Cheese Pizza",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Available\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 29,
+    "fields": {
+        "action_time": "2026-09-06T17:15:02.701Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "food"
+        ],
+        "object_id": "18",
+        "object_repr": "Jain Cheese Pizza",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Available\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 30,
+    "fields": {
+        "action_time": "2026-09-06T17:15:02.703Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "food"
+        ],
+        "object_id": "20",
+        "object_repr": "Jain Chocolate Cake",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Available\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 31,
+    "fields": {
+        "action_time": "2026-09-06T17:15:24.368Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "food"
+        ],
+        "object_id": "21",
+        "object_repr": "Jain Vanilla Ice Cream",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Available\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 32,
+    "fields": {
+        "action_time": "2026-09-06T17:15:46.523Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "food"
+        ],
+        "object_id": "21",
+        "object_repr": "Jain Vanilla Ice Cream",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Available\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 33,
+    "fields": {
+        "action_time": "2026-09-06T17:39:06.051Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "order"
+        ],
+        "object_id": "19",
+        "object_repr": "Order #19 - hiral",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Status\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 34,
+    "fields": {
+        "action_time": "2026-09-06T17:39:06.052Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "order"
+        ],
+        "object_id": "18",
+        "object_repr": "Order #18 - Hiral Patil",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Status\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 35,
+    "fields": {
+        "action_time": "2026-09-06T17:56:15.466Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "order"
+        ],
+        "object_id": "19",
+        "object_repr": "Order #19 - hiral",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Status\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 36,
+    "fields": {
+        "action_time": "2026-09-06T18:30:19.224Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "order"
+        ],
+        "object_id": "20",
+        "object_repr": "Order #20 - dimple_test",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Status\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 37,
+    "fields": {
+        "action_time": "2026-09-06T19:17:41.059Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "order"
+        ],
+        "object_id": "23",
+        "object_repr": "Order #23 - test_user",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Status\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 38,
+    "fields": {
+        "action_time": "2026-09-06T19:18:04.297Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "order"
+        ],
+        "object_id": "23",
+        "object_repr": "Order #23 - test_user",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Status\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 39,
+    "fields": {
+        "action_time": "2026-09-07T16:34:54.337Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "1",
+        "object_repr": "HiralPatil",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"password\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 40,
+    "fields": {
+        "action_time": "2026-09-07T16:38:53.111Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "food"
+        ],
+        "object_id": "1",
+        "object_repr": "Margherita Pizza",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 41,
+    "fields": {
+        "action_time": "2026-09-07T16:43:57.211Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "food"
+        ],
+        "object_id": "4",
+        "object_repr": "Veg Burger",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 42,
+    "fields": {
+        "action_time": "2026-09-07T16:45:36.518Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "food"
+        ],
+        "object_id": "2",
+        "object_repr": "Cheese Burger",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 43,
+    "fields": {
+        "action_time": "2026-09-07T16:47:34.489Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "food"
+        ],
+        "object_id": "3",
+        "object_repr": "Farmhouse Pizza",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 44,
+    "fields": {
+        "action_time": "2026-09-07T16:49:34.375Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "food"
+        ],
+        "object_id": "5",
+        "object_repr": "Paneer Tikka",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 45,
+    "fields": {
+        "action_time": "2026-09-07T16:54:30.647Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "food"
+        ],
+        "object_id": "6",
+        "object_repr": "Veg Biryani",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 46,
+    "fields": {
+        "action_time": "2026-09-07T16:58:03.526Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "food"
+        ],
+        "object_id": "7",
+        "object_repr": "White Sauce Pasta",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 47,
+    "fields": {
+        "action_time": "2026-09-07T16:58:15.356Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "food"
+        ],
+        "object_id": "8",
+        "object_repr": "Red Sauce Pasta",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 48,
+    "fields": {
+        "action_time": "2026-09-07T17:12:21.359Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "food"
+        ],
+        "object_id": "9",
+        "object_repr": "Chocolate Cake",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 49,
+    "fields": {
+        "action_time": "2026-09-07T17:12:33.110Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "food"
+        ],
+        "object_id": "10",
+        "object_repr": "Gulab Jamun",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 50,
+    "fields": {
+        "action_time": "2026-09-07T17:12:46.416Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "food"
+        ],
+        "object_id": "11",
+        "object_repr": "Mango Shake",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 51,
+    "fields": {
+        "action_time": "2026-09-07T17:12:56.106Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "food"
+        ],
+        "object_id": "12",
+        "object_repr": "Cold Coffee",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Image\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 52,
+    "fields": {
+        "action_time": "2026-09-07T17:44:10.141Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "food"
+        ],
+        "object_id": "2",
+        "object_repr": "Cheese Burger",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 53,
+    "fields": {
+        "action_time": "2026-09-07T17:54:06.497Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "food"
+        ],
+        "object_id": "1",
+        "object_repr": "Margherita Pizza",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 54,
+    "fields": {
+        "action_time": "2026-09-07T18:13:53.734Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "order"
+        ],
+        "object_id": "24",
+        "object_repr": "Order #24 - Hiral Patil",
+        "action_flag": 2,
+        "change_message": "[]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 55,
+    "fields": {
+        "action_time": "2026-09-07T18:14:02.066Z",
+        "user": [
+            "HiralPatil"
+        ],
+        "content_type": [
+            "home",
+            "order"
+        ],
+        "object_id": "24",
+        "object_repr": "Order #24 - Hiral Patil",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Status\"]}}]"
+    }
+}
+]
