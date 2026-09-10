@@ -856,44 +856,52 @@ def place_order(request):
     request.session["cart"] = {}
 
   
-   # -----------------------------------------------------
+    # -----------------------------------------------------
     # PAYMENT ROUTING
     # -----------------------------------------------------
-   # -----------------------------------------------------
-    # PAYMENT ROUTING (Simple & Working Card-Only)
-    # -----------------------------------------------------
+    
     if payment_method == "ONLINE":
         stripe.api_key = settings.STRIPE_SECRET_KEY
-        host = request.build_absolute_uri('/')[:-1]
+        
+        # Yeh line Render aur local dono par 100% sahi URL banayegi
+        current_host = request.get_host()
+        protocol = 'https' if not current_host.startswith('127.0.0.1') and not current_host.startswith('localhost') else 'http'
+        host = f"{protocol}://{current_host}"
 
         stripe_amount = int(total * 100)
         if stripe_amount < 5000:
             stripe_amount = 5000
 
-        checkout_session = stripe.checkout.Session.create(
-            payment_method_types=['card'],
-            billing_address_collection='required',
-            customer_email=request.user.email if request.user.is_authenticated and request.user.email else None,
-            metadata={
-                'order_id': order.id,
-            },
-            line_items=[
-                {
-                    'price_data': {
-                        'currency': 'inr',
-                        'unit_amount': stripe_amount,
-                        'product_data': {
-                            'name': f'Food Order #{order.id}',
-                        },
-                    },
-                    'quantity': 1,
+        try:
+            checkout_session = stripe.checkout.Session.create(
+                payment_method_types=['card'],
+                billing_address_collection='required',
+                customer_email=request.user.email if request.user.is_authenticated and request.user.email else None,
+                metadata={
+                    'order_id': order.id,
                 },
-            ],
-            mode='payment',
-            success_url=host + '/payment/success/?session_id={CHECKOUT_SESSION_ID}',
-            cancel_url=host + '/payment/cancel/',
-        )
-        return redirect(checkout_session.url, code=303)
+                line_items=[
+                    {
+                        'price_data': {
+                            'currency': 'inr',
+                            'unit_amount': stripe_amount,
+                            'product_data': {
+                                'name': f'Food Order #{order.id}',
+                            },
+                        },
+                        'quantity': 1,
+                    },
+                ],
+                mode='payment',
+                success_url=host + '/payment/success/?session_id={CHECKOUT_SESSION_ID}',
+                cancel_url=host + '/payment/cancel/',
+            )
+            return redirect(checkout_session.url, code=303)
+            
+        except Exception as e:
+            print("--- STRIPE ERROR ---", str(e))
+            messages.error(request, f"Payment Error: {str(e)}")
+            return redirect("checkout")
 
     # COD fallback
     request.session["cart"] = {}
