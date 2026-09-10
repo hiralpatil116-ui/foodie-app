@@ -856,14 +856,18 @@ def place_order(request):
     request.session["cart"] = {}
 
   
-    # -----------------------------------------------------
+   # -----------------------------------------------------
     # PAYMENT ROUTING
-    # -----------------------------------------------------
-    
     if payment_method == "ONLINE":
-        stripe.api_key = settings.STRIPE_SECRET_KEY
+        # Yeh check karega ki key sach mein mil rahi hai ya nahi
+        stripe_key = getattr(settings, 'STRIPE_SECRET_KEY', None) or os.getenv('STRIPE_SECRET_KEY')
         
-        # Yeh line Render aur local dono par 100% sahi URL banayegi
+        if not stripe_key:
+            messages.error(request, "Error: STRIPE_SECRET_KEY is missing in Render Environment variables!")
+            return redirect('checkout')
+
+        stripe.api_key = stripe_key
+        
         current_host = request.get_host()
         protocol = 'https' if not current_host.startswith('127.0.0.1') and not current_host.startswith('localhost') else 'http'
         host = f"{protocol}://{current_host}"
@@ -899,9 +903,10 @@ def place_order(request):
             return redirect(checkout_session.url, code=303)
             
         except Exception as e:
-            print("--- STRIPE ERROR ---", str(e))
-            messages.error(request, f"Payment Error: {str(e)}")
-            return redirect("checkout")
+            # Ab yahan exact error print hoga ki Stripe ko kya dikkat hai
+            print("--- STRIPE CRASH ERROR ---", str(e))
+            messages.error(request, f"Stripe Failed: {str(e)}")
+            return redirect('checkout')
 
     # COD fallback
     request.session["cart"] = {}
