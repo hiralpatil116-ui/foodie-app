@@ -902,17 +902,14 @@ def place_order(request):
         # -----------------------------------------------------
         # 2. CASH ON DELIVERY (COD) / OTHER METHODS
         # -----------------------------------------------------
-        else:
+    else:
             # Aapka COD wala purana code yahan aayega
             # Jaise cart clear karna aur success page par bhejna:
             # Cart.objects.filter(user=request.user).delete()
             messages.success(request, "Order placed successfully via COD!")
             return redirect('order_success') # Aapka jo bhi success page ka URL name ho
 
-    # COD fallback
-    request.session["cart"] = {}
-    messages.success(request, "Your order has been placed successfully! 🍴")
-    return redirect("payment_success")
+    
 
     # -----------------------------------------------------
     # payment  SUCCESS 
