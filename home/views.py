@@ -859,7 +859,10 @@ def place_order(request):
    # -----------------------------------------------------
     # PAYMENT ROUTING
     # -----------------------------------------------------
-    if payment_method in ["ONLINE", "UPI"]:
+   # -----------------------------------------------------
+    # PAYMENT ROUTING (Simple & Working Card-Only)
+    # -----------------------------------------------------
+    if payment_method == "ONLINE":
         stripe.api_key = settings.STRIPE_SECRET_KEY
         host = request.build_absolute_uri('/')[:-1]
 
@@ -867,16 +870,10 @@ def place_order(request):
         if stripe_amount < 5000:
             stripe_amount = 5000
 
-
-
-        # customer_email safe handling
-        user_email = request.user.email if request.user.is_authenticated and request.user.email else None
-
-
         checkout_session = stripe.checkout.Session.create(
-            payment_method_types=['card','upi'],
+            payment_method_types=['card'],
             billing_address_collection='required',
-            customer_email=request.user.email,
+            customer_email=request.user.email if request.user.is_authenticated and request.user.email else None,
             metadata={
                 'order_id': order.id,
             },
@@ -890,7 +887,6 @@ def place_order(request):
                         },
                     },
                     'quantity': 1,
-                
                 },
             ],
             mode='payment',
@@ -898,7 +894,6 @@ def place_order(request):
             cancel_url=host + '/payment/cancel/',
         )
         return redirect(checkout_session.url, code=303)
-
 
     # COD fallback
     request.session["cart"] = {}
