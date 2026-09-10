@@ -18,10 +18,14 @@ import cloudinary
 import stripe
 import cloudinary.uploader
 import cloudinary.api
-STRIPE_SECRET_KEY = config('STRIPE_API_KEY', default='')
+
 stripe.api_key = STRIPE_SECRET_KEY
 
 
+
+# Decouple ki jagah seedha os.getenv use karo taaki Render direct utha le
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY', '')
+STRIPE_PUBLISHABLE_KEY = os.getenv('STRIPE_PUBLISHABLE_KEY', '')
 # Cloudinary Storage Configuration
 CLOUDINARY_STORAGE = {
     'CLOUD_NAME': config('CLOUDINARY_CLOUD_NAME', default=''),

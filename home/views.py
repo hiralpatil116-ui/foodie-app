@@ -859,54 +859,55 @@ def place_order(request):
    # -----------------------------------------------------
     # PAYMENT ROUTING
     if payment_method == "ONLINE":
-        # Yeh check karega ki key sach mein mil rahi hai ya nahi
-        stripe_key = getattr(settings, 'STRIPE_SECRET_KEY', None) or os.getenv('STRIPE_SECRET_KEY')
-        
-        if not stripe_key:
-            messages.error(request, "Error: STRIPE_SECRET_KEY is missing in Render Environment variables!")
-            return redirect('checkout')
+            stripe_key = settings.STRIPE_SECRET_KEY or os.environ.get('STRIPE_SECRET_KEY')
+            
+            if not stripe_key:
+                messages.error(request, "Stripe key is missing.")
+                return redirect('checkout')
 
-        stripe.api_key = stripe_key
-        
-        current_host = request.get_host()
-        protocol = 'https' if not current_host.startswith('127.0.0.1') and not current_host.startswith('localhost') else 'http'
-        host = f"{protocol}://{current_host}"
+            stripe.api_key = stripe_key
+            
+            current_host = request.get_host()
+            protocol = 'https' if not current_host.startswith('127.0.0.1') and not current_host.startswith('localhost') else 'http'
+            host = f"{protocol}://{current_host}"
 
-        stripe_amount = int(total * 100)
-        if stripe_amount < 5000:
-            stripe_amount = 5000
+            stripe_amount = int(total * 100)
+            if stripe_amount < 5000:
+                stripe_amount = 5000
 
-        try:
-            checkout_session = stripe.checkout.Session.create(
-                payment_method_types=['card'],
-                billing_address_collection='required',
-                customer_email=request.user.email if request.user.is_authenticated and request.user.email else None,
-                metadata={
-                    'order_id': order.id,
-                },
-                line_items=[
-                    {
+            try:
+                checkout_session = stripe.checkout.Session.create(
+                    payment_method_types=['card'],
+                    billing_address_collection='required',
+                    customer_email=request.user.email if request.user.is_authenticated and request.user.email else None,
+                    metadata={'order_id': order.id},
+                    line_items=[{
                         'price_data': {
                             'currency': 'inr',
                             'unit_amount': stripe_amount,
-                            'product_data': {
-                                'name': f'Food Order #{order.id}',
-                            },
+                            'product_data': {'name': f'Food Order #{order.id}'},
                         },
                         'quantity': 1,
-                    },
-                ],
-                mode='payment',
-                success_url=host + '/payment/success/?session_id={CHECKOUT_SESSION_ID}',
-                cancel_url=host + '/payment/cancel/',
-            )
-            return redirect(checkout_session.url, code=303)
-            
-        except Exception as e:
-            # Ab yahan exact error print hoga ki Stripe ko kya dikkat hai
-            print("--- STRIPE CRASH ERROR ---", str(e))
-            messages.error(request, f"Stripe Failed: {str(e)}")
-            return redirect('checkout')
+                    }],
+                    mode='payment',
+                    success_url=host + '/payment/success/?session_id={CHECKOUT_SESSION_ID}',
+                    cancel_url=host + '/payment/cancel/',
+                )
+                return redirect(checkout_session.url, code=303)
+                
+            except Exception as e:
+                messages.error(request, f"Stripe Error: {str(e)}")
+                return redirect('checkout')
+
+        # -----------------------------------------------------
+        # 2. CASH ON DELIVERY (COD) / OTHER METHODS
+        # -----------------------------------------------------
+        else:
+            # Aapka COD wala purana code yahan aayega
+            # Jaise cart clear karna aur success page par bhejna:
+            # Cart.objects.filter(user=request.user).delete()
+            messages.success(request, "Order placed successfully via COD!")
+            return redirect('order_success') # Aapka jo bhi success page ka URL name ho
 
     # COD fallback
     request.session["cart"] = {}
