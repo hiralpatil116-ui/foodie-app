@@ -859,7 +859,7 @@ def place_order(request):
    # -----------------------------------------------------
     # PAYMENT ROUTING
     # -----------------------------------------------------
-    if payment_method == "ONLINE":
+    if payment_method in ["ONLINE", "UPI"]:
         stripe.api_key = settings.STRIPE_SECRET_KEY
         host = request.build_absolute_uri('/')[:-1]
 
@@ -874,7 +874,7 @@ def place_order(request):
 
 
         checkout_session = stripe.checkout.Session.create(
-            payment_method_types=['card'],
+            payment_method_types=['card','upi'],
             billing_address_collection='required',
             customer_email=request.user.email,
             metadata={
@@ -890,6 +890,7 @@ def place_order(request):
                         },
                     },
                     'quantity': 1,
+                
                 },
             ],
             mode='payment',
@@ -921,19 +922,21 @@ def payment_success(request):
         stripe.api_key = settings.STRIPE_SECRET_KEY
         try:
             # Stripe se payment status fetch karein
-            session = stripe.checkout.Session.retrieve(session_id)
+            session = stripe.checkout.Session.retrieve(session_id, expand=['line_items'])
             if session.payment_status == 'paid':
                 # Order ID description/line_items se nikalna ya session ke metadata se
                 # Agar order status update karna hai:
-                order_id = session.line_items.data[0].description.split('#')[-1] if session.line_items else None
-                if not order_id and 'Food Order #' in str(session):
-                    # fallback lookup
-                    pass
+                order_id = session.metadata.get('order_id')
+                if order_id:
+                    order = Order.objects.filter(id=order_id).first()
+                    # Agar order mil gaya, toh status update bhi kar sakte hain
+                    if order and order.status == "Order Placed":
+                        order.status = "Paid / Processing"
+                        order.save()
         except Exception as e:
             print("Stripe session error:", e)
 
     return render(request, 'payment_success.html', {'order': order})
-
 
 # =========================================================
 # ORDER SUCCESS
