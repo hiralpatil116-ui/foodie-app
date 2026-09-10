@@ -15,8 +15,11 @@ import os
 from decouple import config
 import dj_database_url
 import cloudinary
+import stripe
 import cloudinary.uploader
 import cloudinary.api
+STRIPE_SECRET_KEY = config('STRIPE_API_KEY', default='')
+stripe.api_key = STRIPE_SECRET_KEY
 
 
 # Cloudinary Storage Configuration
@@ -202,5 +205,5 @@ LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 
 
-STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
+
 STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_PUBLISHABLE_KEY')
