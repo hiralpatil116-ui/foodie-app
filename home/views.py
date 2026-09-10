@@ -345,7 +345,7 @@ def add_to_cart(request, food_id):
         f"{food.name} added to cart! 🛒❤️"
     )
 
-    return redirect("checkout")
+    return redirect("cart")
 
 
 
